@@ -1,17 +1,41 @@
-// console.log(55);
 
-// alert('Слава Україні');
 
- console.log(true);
+let box;
 
- console.log(false);
+console.log(box);
 
- console.log('this is text');
+box = 3.9995;
 
- console.log(50);
+console.log(box);
 
- console.log(null);
+let box2 = 'Hello, world';
 
- console.log(undefined);
+console.log(box2);
 
- console.log(5n);
+box2 = 236;
+
+console.log(box2)
+
+let isActive = true;
+
+let isLogged = false;
+
+let isRecording = false;
+
+isRecording = true;
+
+let x = 10;
+
+let y = x;
+
+console.log(y);
+
+let z = 10;
+
+let u = z;
+
+u = 15;
+
+console.log(z);
+
+console.log(u);
