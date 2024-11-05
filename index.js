@@ -1,14 +1,39 @@
-let box1 = 'Hello world!';
+let result1 = 1+2;
 
-let box2;
+console.log(result1)
 
-box2 = 15;
+let result2 = 3-2;
 
-console.log(box2)
+console.log(result2);
 
-console.log(box1)
+let result3 = 2*2;
 
-const birthday = 'octovber';
+console.log(result3);
 
-console.log(birthday);
+let result4 = 4/2;
 
+console.log(result4);
+
+let result5 = 0.1 + 0.2;
+
+console.log(result5);
+
+let notAllowe = 10 / 0;
+
+console.log(notAllowe);
+
+let brrrr = 10 / 'Hello world';
+
+console.log(brrrr );
+
+let newLine = 'Hello' + 'world';
+
+console.log(newLine);
+
+newLine = 5 + 'world';
+
+console.log(newLine);
+
+newLine = 5 + '1';
+
+console.log(newLine);
