@@ -1,39 +1,35 @@
-let result1 = 1+2;
+// Неявне перетворення
+let num = 6 - '1';
+console.log(num);
 
-console.log(result1)
+// Явне перетворення (приведення типів)
+let thisIsNumber = Number('45');
+console.log(thisIsNumber);
 
-let result2 = 3-2;
+// Bulean
+// true
+// false
 
-console.log(result2);
+let buleanNumber = true + 1;
+console.log(buleanNumber);
 
-let result3 = 2*2;
+// String
+let thisIsString = String(45);
+console.log(thisIsString);
 
-console.log(result3);
+ let testString = null + ''; 
+console.log(testString);
+// ___________________________________
 
-let result4 = 4/2;
+let test = 15 - Number('17');
+console.log(test);
 
-console.log(result4);
+// NaN  Not-a-Number
+let notANamber = 2 * 'Hello';
+console.log(notANamber);
 
-let result5 = 0.1 + 0.2;
+// typeof оператор
+let box = true;
+typeof box;
+console.log(typeof box);
 
-console.log(result5);
-
-let notAllowe = 10 / 0;
-
-console.log(notAllowe);
-
-let brrrr = 10 / 'Hello world';
-
-console.log(brrrr );
-
-let newLine = 'Hello' + 'world';
-
-console.log(newLine);
-
-newLine = 5 + 'world';
-
-console.log(newLine);
-
-newLine = 5 + '1';
-
-console.log(newLine);
