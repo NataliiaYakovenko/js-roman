@@ -1,13 +1,36 @@
-const sum = (2 + 2) * 6;
-console.log(sum);
+// Бінарні оператори
+let a = 2 + 2;
+let b = 2 - 2;
+let c = 2 * 2;
+let d = 2 / 2;
 
-// Екранування
+// Унарні оператори
+let e = -2;
 
-const hello = 'Маша сказала: "Привіт"';
-console.log(hello);
+// Залишок від цілочисельного поділу
+// 12 / 3 = 4   0 - залишк від цілочисельного поділу
+// 15 / 6 = 2.5    (15-12)  3 -залишк від цілочисельного поділу 
 
-const helloEscape = 'Маша сказала: \'Привіт\'';
-console.log(helloEscape);
+// % - залишк від цілочисельного поділу
+let rest =15 % 6;
+console.log(rest);
 
-const test = '-Мені сьогодні прийшла заробітна плата, а тобі? \n- Мені також, чудово!';
-console.log(test);
+// Парні числа
+let pair = 4 % 2;
+console.log(pair);
+
+// Непарні числа
+let anPair = 5 % 2;
+console.log(anPair);
+
+// Оператор ступення **
+const x3 = 2 * 2 * 2;
+console.log(x3);
+
+const x4 = 2 ** 3;
+console.log(x3);
+
+
+
+
+
