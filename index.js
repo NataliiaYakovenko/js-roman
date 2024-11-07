@@ -1,35 +1,13 @@
-// Неявне перетворення
-let num = 6 - '1';
-console.log(num);
+const sum = (2 + 2) * 6;
+console.log(sum);
 
-// Явне перетворення (приведення типів)
-let thisIsNumber = Number('45');
-console.log(thisIsNumber);
+// Екранування
 
-// Bulean
-// true
-// false
+const hello = 'Маша сказала: "Привіт"';
+console.log(hello);
 
-let buleanNumber = true + 1;
-console.log(buleanNumber);
+const helloEscape = 'Маша сказала: \'Привіт\'';
+console.log(helloEscape);
 
-// String
-let thisIsString = String(45);
-console.log(thisIsString);
-
- let testString = null + ''; 
-console.log(testString);
-// ___________________________________
-
-let test = 15 - Number('17');
+const test = '-Мені сьогодні прийшла заробітна плата, а тобі? \n- Мені також, чудово!';
 console.log(test);
-
-// NaN  Not-a-Number
-let notANamber = 2 * 'Hello';
-console.log(notANamber);
-
-// typeof оператор
-let box = true;
-typeof box;
-console.log(typeof box);
-
