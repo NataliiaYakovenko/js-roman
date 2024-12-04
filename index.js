@@ -1,31 +1,49 @@
-//Задача
-//Створіть функцію, яка приймає число, додає до нього 5 і виводить результат у консоль
+//Види функцій
+/*
+1. Об"явлена функція - functions declaration
 
-function summa(number){
- console.log(number + 5);
+function ім'я функції (аргумент1, аргумент2){
+    тіло функції}
+
+Викликаємо функцію
+ім'я функції (аргумент1,аргумент2)
+
+hoisting - оголошення функції піднімається до верхньої частини нашого коду
+функцію ми можемо викликати в будь-якому місці
+
+*/
+
+function greetingUser(userName) {
+    console.log('Hi, ' + userName);
 }
-summa(5);
-summa(7);
-summa(10);
+greetingUser('Alex');
 
-//Варіант2 Roma
-function addFiveToNumber(number){
-    let result = number + 5;
-    console.log(result);
-    return result;
+//2. functions expression - Функціональеі вирази
+// const ім'я функції = function(аргумент) {
+//   тіло функції
+// function expression - викликається після того, як функція буде оголошена
+// }
+const greet = function(userName){
+    console.log('Hi, ' + userName);
 }
-const addFiveToNumberResult = addFiveToNumber(5);
-addFiveToNumber('row');
+greet('Kevin');
 
-//Задача. Написати функцію, яка складає два числа і повертає результат розрахунку
+//3. Стрілкові функції - Arrow functions
+// const ім'я функції = (аргумент) => {
+// тіло функції
+//}
 
-function addTwoNumbers(num1, num2){
-    const result = num1+num2;
-    return result;
+const greetArrow = (userName)=>{
+    console.log('Hi, ' + userName);
 }
-//const functionResult = addTwoNumbers(2,5);
-//console.log(functionResult);
+greetArrow('Stepan');
 
-//Якщо ми хочемо додати дві функції
-const addTwoNumbersResult = addTwoNumbers(5,5);
-console.log(addTwoNumbersResult+addFiveToNumberResult);
+// Задача написати функцію, яка виводить системну дату та час(поточні)
+
+const getDateWithTime = function(){
+    //круглі дужки, коли нам  непотрібні параметри
+    //параметри не потрібні, коли робота функції залежіть від якогось зовнішнього значення
+    const getDateWithTime = new Date();
+    return getDateWithTime;
+}
+
