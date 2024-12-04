@@ -1,27 +1,31 @@
-//Функції - (Functions)
-// Функція (підпрограма) - блок коду, який виконує певні дії при виклику
-// Функція може примати аргументи - значення, які передаються у функцію. Функція може викорстовувати аргументи у своїй роботі
-// Функція може повертати значення, а може і не повертати
-// Функція - це фрагмент програмного коду, до якого можна звернутись з іншого місця програми
-
-/* Синтаксис функції
-Як оголосити функцію?
-  function ім'я функції(аргумент1, аргумент2) {
-        тіло функції
-} 
- */
-
 //Задача
-// Написати функцію, яка буде приймати ім'я користувача: і буде вітатись з цим користувачем
+//Створіть функцію, яка приймає число, додає до нього 5 і виводить результат у консоль
 
-function greeting(userName){
-   //userName - абстракція на якій ми зав'язуємо логіку роботи функції
-   //userName - формальний параметр
-   console.log('Привіт, '+ userName);
+function summa(number){
+ console.log(number + 5);
 }
-//Використання функції
-//Параметри, які ви передаєте при виклику функції - це формальні параметри
-greeting('Alex') //Аlex - це аргумент функції - фактичний параметр
-greeting('Jon'); // Jon - фактичний параметр
-greeting('Sem'); // Sem - фактичний параметр
-greeting('Salam'); //Salar - фактичний параметр
+summa(5);
+summa(7);
+summa(10);
+
+//Варіант2 Roma
+function addFiveToNumber(number){
+    let result = number + 5;
+    console.log(result);
+    return result;
+}
+const addFiveToNumberResult = addFiveToNumber(5);
+addFiveToNumber('row');
+
+//Задача. Написати функцію, яка складає два числа і повертає результат розрахунку
+
+function addTwoNumbers(num1, num2){
+    const result = num1+num2;
+    return result;
+}
+//const functionResult = addTwoNumbers(2,5);
+//console.log(functionResult);
+
+//Якщо ми хочемо додати дві функції
+const addTwoNumbersResult = addTwoNumbers(5,5);
+console.log(addTwoNumbersResult+addFiveToNumberResult);
