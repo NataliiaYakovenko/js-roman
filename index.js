@@ -1,49 +1,25 @@
-//Види функцій
-/*
-1. Об"явлена функція - functions declaration
+//Цикли - Loops
 
-function ім'я функції (аргумент1, аргумент2){
-    тіло функції}
-
-Викликаємо функцію
-ім'я функції (аргумент1,аргумент2)
-
-hoisting - оголошення функції піднімається до верхньої частини нашого коду
-функцію ми можемо викликати в будь-якому місці
-
-*/
-
-function greetingUser(userName) {
-    console.log('Hi, ' + userName);
-}
-greetingUser('Alex');
-
-//2. functions expression - Функціональеі вирази
-// const ім'я функції = function(аргумент) {
-//   тіло функції
-// function expression - викликається після того, як функція буде оголошена
-// }
-const greet = function(userName){
-    console.log('Hi, ' + userName);
-}
-greet('Kevin');
-
-//3. Стрілкові функції - Arrow functions
-// const ім'я функції = (аргумент) => {
-// тіло функції
-//}
-
-const greetArrow = (userName)=>{
-    console.log('Hi, ' + userName);
-}
-greetArrow('Stepan');
-
-// Задача написати функцію, яка виводить системну дату та час(поточні)
-
-const getDateWithTime = function(){
-    //круглі дужки, коли нам  непотрібні параметри
-    //параметри не потрібні, коли робота функції залежіть від якогось зовнішнього значення
-    const getDateWithTime = new Date();
-    return getDateWithTime;
+let iterator = 0;
+//Прохід циклу (коло) називається інтерація
+while(iterator <= 10){
+    console.log(iterator);
+    iterator++;
 }
 
+//Задача з паролем
+let password = "1234";
+let userPassword = "";
+
+do{
+    //userPassword = prompt('Enter password');
+} while(userPassword !== password);
+console.log('Password is correct');
+
+// for
+ for(let i = 0; i < 10; i++){
+    console.log(i)
+ }
+ // let i = 0    - це початковий стан
+ //  i < 10      - умова, за якої цикл повторюється
+ // і++          - зміна лічильника на кожній ітерації
