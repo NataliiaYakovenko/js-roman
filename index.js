@@ -1,43 +1,26 @@
-//Способи створення об'єктів
+//Задача
+//Створити об'єкт собаки
+//Додати властивості і методи: бігти, спати, гавкати
 
-//1. Літеральне створення об'єкта
-const cat1 = {
-}
-
-//2. Функція конструктор для об'єкта
-const cat2 = Object();
-
-//3. Функція конструктор для об'єкта з new
-const cat3 = new Object();
-//__________________________________________
-
-//Задача. Створити об'єкт кота
-const cat = {
-  name:'Mursik',
-  color:'Red',
-  breed:'Dvoroviy',
+const dog = {
+  name: 'Sharik',
+  color: 'Black',
   age: 2,
-  eat: function(){
-    return 'I am eating';
+  breed: 'Mops',
+  run:function(){
+    return 'I am runing';
   },
   sleep: function(){
-    return ' I am sleeping';
+    return 'I am sleeping';
+  },
+  gavkat: function(){
+    return 'I am gav-gav-gav'
   }
 }
-//Нам потрібно в об'єкті змінити вік кота з 2 до 3 років
-cat.age = cat. age + 1;
-console.log(cat.age);
-//Нам потрібно видалити з об'єкта якусь властивість (наприклад метод sleep)
-delete cat.sleep;
-//Нам потрібно додати в об'єкт якусь властивість, використовується крапка .
-//Додати ім'я друга кота Мурзика до об'єкту кота Мурзика
-cat.friend = 'Tusik';
-console.log(cat.friend);
-//Додати улюблену іжу кота
-cat.favoriteFood = 'fish';
-console.log(cat.favoriteFood);
-//Додати метод, що кіт стрибає
-cat.jump = function(){
-  return 'I am jumping';
-}
-console.log(cat.jump);
+console.log(dog.name);
+console.log(dog.color);
+console.log(dog.age);
+console.log(dog.breed);
+console.log(dog.run);
+console.log(dog.sleep);
+console.log(dog.gavkat);
