@@ -1,26 +1,22 @@
 //Задача
-//Створити об'єкт собаки
-//Додати властивості і методи: бігти, спати, гавкати
-
-const dog = {
-  name: 'Sharik',
-  color: 'Black',
+//Створити об'єкт в об'єкті
+const cat = {
+  name:'Mursik',
+  color:'Red',
+  breed:'Dvoroviy',
   age: 2,
-  breed: 'Mops',
-  run:function(){
-    return 'I am runing';
+  eat: function(){
+    return 'I am eating';
   },
   sleep: function(){
-    return 'I am sleeping';
-  },
-  gavkat: function(){
-    return 'I am gav-gav-gav'
+    return ' I am sleeping';
   }
 }
-console.log(dog.name);
-console.log(dog.color);
-console.log(dog.age);
-console.log(dog.breed);
-console.log(dog.run);
-console.log(dog.sleep);
-console.log(dog.gavkat);
+//Додати об'єкт друга кота Мурзика до об'єкту кота Мурзика
+cat.friend = {
+  name: 'Tusok',
+  color: 'Black',
+  age: 2,
+}
+console.log(cat.friend.name);
+
