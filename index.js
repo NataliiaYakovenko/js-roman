@@ -1,22 +1,28 @@
-//Задача
-//Створити об'єкт в об'єкті
-const cat = {
-  name:'Mursik',
-  color:'Red',
-  breed:'Dvoroviy',
-  age: 2,
-  eat: function(){
-    return 'I am eating';
-  },
-  sleep: function(){
-    return ' I am sleeping';
+// Функція конструктор для об'єкта
+const cat02 = Object();
+//3. Функція конструктор для об'єкта з new
+const cat03 = new Object();
+
+// Конструктор визначає шаблон або скелет об'єктів, які будуть створюватися
+
+//Угоди у функціях конструкторах:
+//1. Ім'я функції-конструктора має починатися з великої літери
+//2. Функція-конструктор повинна викоистовуватись за допомогою оператора new
+
+//Задача. Написати функцію-конструктор для створення кота
+function Cat(name,color,breed,age){
+  this.name = name;
+  this.color = color;
+  this.breed = breed;
+  this.age = age;
+  this.run = function(){
+    return this.name + ' is running';
   }
 }
-//Додати об'єкт друга кота Мурзика до об'єкту кота Мурзика
-cat.friend = {
-  name: 'Tusok',
-  color: 'Black',
-  age: 2,
-}
-console.log(cat.friend.name);
-
+//Задача. Створити два кота за допомогою функції-конструктор
+const cat1 = new Cat('Filia','white','siamskiy',2);
+console.log(cat1);
+const cat2 = new Cat('Sofa','grey','dvoroviy',1);
+console.log(cat2);
+const cat3 = new Cat('lui','blue','dvoroviy',3);
+console.log(cat3);
