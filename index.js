@@ -1,28 +1,19 @@
-// Функція конструктор для об'єкта
-const cat02 = Object();
-//3. Функція конструктор для об'єкта з new
-const cat03 = new Object();
 
-// Конструктор визначає шаблон або скелет об'єктів, які будуть створюватися
-
-//Угоди у функціях конструкторах:
-//1. Ім'я функції-конструктора має починатися з великої літери
-//2. Функція-конструктор повинна викоистовуватись за допомогою оператора new
-
-//Задача. Написати функцію-конструктор для створення кота
-function Cat(name,color,breed,age){
+//Задача функція - конструктор
+/*Створити функцію-конструктор собаки, у якого має бути ім'я, колір, вік
+  Зробіть декілька собак
+*/
+function Dog(name, color,age){
   this.name = name;
   this.color = color;
-  this.breed = breed;
   this.age = age;
-  this.run = function(){
-    return this.name + ' is running';
+  this.gav = function(){
+    return this.name +' is gav-gav-gav';
   }
 }
-//Задача. Створити два кота за допомогою функції-конструктор
-const cat1 = new Cat('Filia','white','siamskiy',2);
-console.log(cat1);
-const cat2 = new Cat('Sofa','grey','dvoroviy',1);
-console.log(cat2);
-const cat3 = new Cat('lui','blue','dvoroviy',3);
-console.log(cat3);
+const dog1 = new Dog('Archy','grey',3);
+console.log(dog1);
+const dog2 = new Dog('Busia',null,2);
+console.log(dog2);
+const dog3 = new Dog('Jerry','black',null);
+console.log(dog3);
