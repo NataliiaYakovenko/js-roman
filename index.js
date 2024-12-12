@@ -1,20 +1,24 @@
-//ШАБЛОННІ РЯДКИ
-//Рядки, які знаходяться у зворотніх лапках називаються Шаблонні рядки
-//Задача
-//В середині альорту вивести розрахунок 2+2 =
-//alert('2+2=' + (2+2))
+//Задача на шаблонні рядки
+//є функція
+/*function greetingUser (user){
+}
+//у на є об'єкт
+const user = {
+    name: 'John',
+    surname: 'Doen',
+    age: 19,
+}*/
+//Нписати фунцію greetingUser щоб вона вітала користувача і казала скільки
+//йьому років виконається у наступному році
+//задачу вирішити через шаблонний рядок
 
+function greetingUser (user){
+    return (`Hello, ${user.name} ${user.surname}! You will be ${user.age + 1} next year!`)
+}
+const user = {
+    name: 'John',
+    surname: 'Doen',
+    age: 19,
+}
 
-//Вирази укладаються `${.....}`
-const nickname = 'Вася'
-
-//Створити альорт і привітатися з Васею
-//alert('Привіт,' + nicknamename + '!')
-
-//alert(`Привіт, ${nickname}!`)
-//alert(`результат: ${1+2}`)
-
-//Задача. Запитати у користувача 2 числа і вивести альортом
-const num1 = Number(prompt('Enter first number'))
-const num2 = Number(prompt('Enter second number'))
-alert(`${num1} + ${num2} = ${num1+num2}`)
+console.log(greetingUser(user));
