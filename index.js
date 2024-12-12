@@ -1,13 +1,21 @@
-//Ми можемо змінювати об'єкти за посиланням
-
+// [] - обчислювальні властивості
 const user = {
-    name: 'John',
-    surname: 'Doen',
-    age: 19,
-}
+    name: 'John', // ключ name, значення John
+    'favorite color': 'red', // беремо в лапки якщо потрібно вказати два окремих слова
+    0: 'value',// 0 приводится до string
+}   
+console.log(user.name);
+// Ключем в об'єкті може бути рядок або тип даних Symbol
+// . - оператор достуау за ім'ям властивості (коли мова йде про валідні ідентифікатори)
+ // [] - оператор доступу до обчислювальної властивосіт(коли мова йде про невалідні ідентифікатори)
 
-function greetingUser (user){
-    user.age = 50;// перевизначення властивостей
-    return (`Hello, ${user.name} ${user.surname}! You will be ${user.age + 1} next year!`)
+console.log(user['favorite color']);
+console.log(user[0]);
+//------------------------------------------------------------------------
+
+const someObj = {
+    2: 10,
 }
-console.log(greetingUser(user));
+//Задача. Отримати значення яке знаходится під ключем 2
+console.log(someObj[2]);
+
