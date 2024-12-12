@@ -1,71 +1,20 @@
-//ЗАДАЧІ
-/*
-Задача1
-Зробити функцію конструктор Country, яка приймає в якості аргументів
-- надва країни
-- популяцію (population)
-- площа (area)
-Спроектувати метод густоти населення
-Густата населення = популяція цієї країни / на площу цієї країни
-
-*/
-
-function Country(name,population, area){
-this.name = name;
-this.population = population;
-this.area = area;
-
-this.getPopulationDensity = function(){
-return this.population / this.area
-}
-}
-
-const country1 = new Country('Denmark', 10000,42956)
-console.log(country1);
-console.log(country1.getPopulationDensity());
+//ШАБЛОННІ РЯДКИ
+//Рядки, які знаходяться у зворотніх лапках називаються Шаблонні рядки
+//Задача
+//В середині альорту вивести розрахунок 2+2 =
+//alert('2+2=' + (2+2))
 
 
-/*
-Задача2
-Зпробити функцію - конструктор авто, яка має
-- назву
--максимальну швидкість
-- поточна швидкість
-Спроектувати
-- метод прискорення accelearte - приймає в якості аргумента певне прискорення
-зауважти проскорення не може бути більше максимальної швидкості
-- метод сповільнення deaccelearte - приймає в якості аргкменту певне сповільнення
-зауважте при сповільнені поточна швидкість не може бути за нуль
--метод зупинк stop
+//Вирази укладаються `${.....}`
+const nickname = 'Вася'
 
- */
-function Avto(brand,maxSpeed, speed){
-    this.brand = brand;
-    this.maxSpeed = maxSpeed;
-    this.speed = 0;
-    
-    this.accelearte = function(increaseSpeed){
-        this.speed = this.speed + increaseSpeed;//до поточної швидкості додаємо прискорення
-        if(this.speed > this.maxSpeed){
-            this.speed = this.maxSpeed;
-        }
-        return this.speed
-    }
+//Створити альорт і привітатися з Васею
+//alert('Привіт,' + nicknamename + '!')
 
-    this.deaccelearte = function(decreaseSpeed){
-        this.speed = this.speed - decreaseSpeed;
-        if(this.speed < 0){
-            this.speed = 0;
-        }
-        return this.speed
-    }
-    this.stop = function(){
-        this.speed = 0
-        return this.speed;
-    }
-    }
-  const avto1 = new Avto('Reno', 300, 60)
-  console.log(avto1);
- 
+//alert(`Привіт, ${nickname}!`)
+//alert(`результат: ${1+2}`)
 
-
+//Задача. Запитати у користувача 2 числа і вивести альортом
+const num1 = Number(prompt('Enter first number'))
+const num2 = Number(prompt('Enter second number'))
+alert(`${num1} + ${num2} = ${num1+num2}`)
