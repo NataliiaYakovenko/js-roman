@@ -1,24 +1,13 @@
-//Задача на шаблонні рядки
-//є функція
-/*function greetingUser (user){
-}
-//у на є об'єкт
+//Ми можемо змінювати об'єкти за посиланням
+
 const user = {
     name: 'John',
     surname: 'Doen',
     age: 19,
-}*/
-//Нписати фунцію greetingUser щоб вона вітала користувача і казала скільки
-//йьому років виконається у наступному році
-//задачу вирішити через шаблонний рядок
+}
 
 function greetingUser (user){
+    user.age = 50;// перевизначення властивостей
     return (`Hello, ${user.name} ${user.surname}! You will be ${user.age + 1} next year!`)
 }
-const user = {
-    name: 'John',
-    surname: 'Doen',
-    age: 19,
-}
-
 console.log(greetingUser(user));
