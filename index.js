@@ -1,65 +1,71 @@
-/*Розробка програми для керуванням книжковим магазином
-1, потрібно створити конструктор об'єктів книг з наступними властивостями
-Спроектувати методи для отримання і всановлення значень цих властивостей
-2, Зробити для всіх книг метод, який би повернув ціну книжки зі знижкою
+//ЗАДАЧІ
+/*
+Задача1
+Зробити функцію конструктор Country, яка приймає в якості аргументів
+- надва країни
+- популяцію (population)
+- площа (area)
+Спроектувати метод густоти населення
+Густата населення = популяція цієї країни / на площу цієї країни
 
 */
-function Book(title, auther,year, price){
-  this.title = title;
-  this.auther = auther;
-  this.year = year;
-  this.price = price;
-  
-  this.getTitle = function() {
-    return this.title;
-  };
-  this.getAuther = function(){
-    return this.auther;
-  };
-  this.getYear = function(){
-    return this.year;
-  };
-  this.getPrice = function(){
-    return this.price;
-  };
-  //змінити назву книги
-  this.setTitle = function (newTitle) {
-    //також можна реалізуваи якісь перевірки
-    this.title = newTitle;
-  }
-    //змінити автора книги
-  this.setAuther = function(newAuther){
-       //також можна реалізуваи якісь перевірки
-    this.auther = newAuther;
-  }
-    //змінити рік книги
-  this.setYear = function(newYear){
-     //також можна реалізуваи якісь перевірки
-    this.year = newYear;
-  }
-    //змінити ціну книги
-  this.setPrice = function(newPrice){
-     //також можна реалізуваи якісь перевірки
-    this.price = newPrice;
-  }
-  //метод, який би повернув ціну книжки зі знижкою
-  this.culculateDiscountedPrice = function(discountPercentage){
-const discountPrice = this.price - (this.price*(discountPercentage/100))
-return discountPrice;
-  }
-};
 
-const book1 = new Book('Чотири вітри','Крістін Геннан',2020,450);
-/*console.log(book1.getTitel());
-console.log(book1.getAuther());
-console.log(book1.getYear());
-console.log(book1.getPrice());
+function Country(name,population, area){
+this.name = name;
+this.population = population;
+this.area = area;
 
-book1.setTitle('New Title');
-book1.setAuther('New Auther');
-book1.setYear(2025);
-book1.setPrice(350);*/
+this.getPopulationDensity = function(){
+return this.population / this.area
+}
+}
+
+const country1 = new Country('Denmark', 10000,42956)
+console.log(country1);
+console.log(country1.getPopulationDensity());
 
 
-//повернув ціну книжки зі знижкою
-console.log(book1.culculateDiscountedPrice(10));
+/*
+Задача2
+Зпробити функцію - конструктор авто, яка має
+- назву
+-максимальну швидкість
+- поточна швидкість
+Спроектувати
+- метод прискорення accelearte - приймає в якості аргумента певне прискорення
+зауважти проскорення не може бути більше максимальної швидкості
+- метод сповільнення deaccelearte - приймає в якості аргкменту певне сповільнення
+зауважте при сповільнені поточна швидкість не може бути за нуль
+-метод зупинк stop
+
+ */
+function Avto(brand,maxSpeed, speed){
+    this.brand = brand;
+    this.maxSpeed = maxSpeed;
+    this.speed = 0;
+    
+    this.accelearte = function(increaseSpeed){
+        this.speed = this.speed + increaseSpeed;//до поточної швидкості додаємо прискорення
+        if(this.speed > this.maxSpeed){
+            this.speed = this.maxSpeed;
+        }
+        return this.speed
+    }
+
+    this.deaccelearte = function(decreaseSpeed){
+        this.speed = this.speed - decreaseSpeed;
+        if(this.speed < 0){
+            this.speed = 0;
+        }
+        return this.speed
+    }
+    this.stop = function(){
+        this.speed = 0
+        return this.speed;
+    }
+    }
+  const avto1 = new Avto('Reno', 300, 60)
+  console.log(avto1);
+ 
+
+
