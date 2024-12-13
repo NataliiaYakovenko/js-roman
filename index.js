@@ -16,3 +16,24 @@ const obj = {
 console.log('Mon' in obj);
 console.log('favirite color' in obj);
 console.log('0' in obj);
+//--------------------------------------------------------------------
+
+//Задача
+/*function greeting(user) { 
+return `Hello ${user.name}`;
+}
+const user ={
+    name: 'John',
+    email: 'john.doy@gmail.com',
+}
+console.log(greeting(user));*/
+//----------------------------------------------------------------------
+
+function greeting(user) { 
+    return `Hello ${'name' in user ? user.name : 'Anonym'}`;
+    }
+    const user ={
+        //name: 'John',
+        email: 'john.doy@gmail.com',
+    }
+    console.log(greeting(user));
