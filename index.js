@@ -1,7 +1,24 @@
-// for...in - використовується для перебору (ітерація) всіх ключів об'єкта
-/*
-У об'єкті user вивести назви всіх ключів і властивостей
- */
+// Задача  for...in - 
+//Написати функцію, яка приймає об'єкт і виводить значення всіх властивостей
+// оформленні *...*, ключі формленні "..."
+
+const obj ={
+    key1: 'value1',
+    key2: 'value2',
+    key3: 'value3',
+    key4: 'value4',
+    key5: 'value5',
+}
+function stylingObject(obj){
+    for(let key in obj){
+        console.log(`"${key}" :>> in *${obj[key]}*`);
+    }
+}
+console.log(stylingObject(obj));
+//--------------------------------------------------
+
+
+
 const user ={
     name: 'Nataliia',
     surname: 'Yakovenko',
