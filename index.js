@@ -1,16 +1,18 @@
-// Задача. у нас є об'єкт ключем в якому є день тижня, а значенням плаихни на цей день
-//прийняти через промпт від корстувача назву дня тижня 
-// і виадати у альорт, що заплановано у користувача на цей тиждень
+// Потрібно перевірити чи є у цьому об'єкті певний ключ
 const obj = {
-    Non:'drive lessons',
+    Mon:'drive lessons',
     Tue: 'dantist visit',
     Wed: 'go to party',
     Thu: 'hard work',
     Fri: 'rest',
     Sat: 'go to park',
+    'favirite color': 'white',
+    0: 'value'
 }
-const nameWeek = prompt('enter week day ( \n Monday = Mon, \n Tuesday = Tue, \n Wed, \n Thu, \n Fri, \n Sat )')
-alert(`On ${nameWeek} you have ${obj[nameWeek]}`)
-
-//alert(obj[nameWeek] ? obj[nameWeek] : 'Error happened') - зробити через тернальний оператор
-
+// Оператор in
+// in - бінарний оператор, тоєсть йому знадобится два операнди
+//базовий синтекс оператора in
+// 'key' in obj
+console.log('Mon' in obj);
+console.log('favirite color' in obj);
+console.log('0' in obj);
