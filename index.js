@@ -1,78 +1,51 @@
-// Задача  for...in - 
-//  У нас є об'єкт з зарплатами повсім відділем
-//Написати функцію, яка повертає загальну суму витрачену на зарплату всх відділів
+ // МАСИВ (Array)
+ // є user, який має декілька номерів телефонів
 
-//Варіант мій
-/*const departmentSalary = {
-  HR: 120000,
-  development: 5500000,
-  PR: 50000,
-  marketing:120000,
-  assistant: 'undefind',
-}
-function amountSpentSalary(departmentSalary){
- let amount = 0;
- for(let key in departmentSalary){
-  if(typeof departmentSalary[key]==='number'){
-    amount+=departmentSalary[key];
+ const userTelephones ={
+  0: '380662865135',
+  1: '380662865348',
+  2: '380662865093',
+ }
+
+ // МАСИВ (Array) - це особливий різновид об'єкта
+ //Оголошення масиву
+// 1 Спосіб
+ const array = [2, 4, 6, 7] // літерал масиву квадратні душки
+                            //літерал - це спосіб створення масиву, 
+                            //де елементи перераховуються через кому 
+                            // і оточуються квадратними душками 
+  // 1 Спосіб   
+  const array2 = new Array(2, 4, 6, 7)         // створення масиву за допомогою конструктора масиву
+  // визиваємо конструктор Array і запихуємо клементи, які нам потрібні
+  // визиваємо конструктор тільки за допомогою new        
+  console.log(array[2]) //вивести значення масиву під 3 елементом
+
+  //Способи доступу до елементів масиву
+  //array[0] - зчитення значень елементів
+  //array[2] = 400 - присвоєння нових значень для елементів масиву
+
+  //Задача. Вивести всі значення масиву у консоль
+  //Використовуємо цикл
+ 
+  for(let i = 0; i <=3; i++){
+// де і це змінна циклу
+// поки і <= 3 (максимальне значення)
+// i++  - і буде додаватися поки не стане 3
+console.log(array[i]);//виводить всі значення масиву 
+  }
+
+  //Якщо потрібно бути додати елементи в масив тоді цикл буде виглядати так
+  const array3 = new Array(2, 4, 6, 7, 50,345); 
+  for(let i = 0; i < array3.length; i++){// length - довжина кількості елементів в масиві
+    //якщо ми поставимо дорівнює додасцяще одна ітерація, яка вже нам непотрібна
+console.log(array3[i]);
+  }
+//-------------------------------------------------------------------------------------
+//Задача. У нас є масив чисел.Вивести на консоль тільки парні числ цього масиву
+const numbersArray =[1,2,3,4,5,6,7,8,9,10]
+
+for(let i = 0; i < numbersArray.length; i++){
+  if(numbersArray[i] % 2 === 0){
+    console.log(numbersArray[i])
   }
 }
-return amount;
-
-  }
-    console.log(amountSpentSalary(departmentSalary));*/
-    //--------------------------------------------------------------------------------
-    
-//Варіант Роми    
-/*const departmentSalary = {
-  HR: 120000,
-  development: 5500000,
-  PR: 50000,
-  marketing:120000,
-  assistant: 'undefind',
-}
-function sumSalary(salaryObjact){
-  let sum = 0;//потрібно створити змінну, яка накаплює нашу суму
-  for(let key in salaryObjact){// перевіряємо ключі в нашому об'єкті
-    if(typeof salaryObjact[key]==='number'){//якщо тип даних нашого обєкта равен number
-    sum+=salaryObjact[key]//sum = sum + salaryObjact[key]// тоді ми накопичуємо суму.
-    //до суми додаємо всі ключі в нашому об'єкті
-  }
-}
-  return sum;
-}
-console.log(sumSalary(departmentSalary));*/
-//----------------------------------------------------------------------------------------
-
-//Варіант Роми коли декілька підприємств
-
-const departmentSalaryInCompany1 = {
-  HR: 120000,
-  development: 5500000,
-  PR: 50000,
-  marketing:120000,
-  assistant: undefined,
-}
-const departmentSalaryInCompany2 = {
-  HR: 500000,
-  JS: 5500000,
-  PR: 50000,
-  QA:800000,
-  clojure: 250000,
-  frontend: 365800,
-  strategyExecution: undefined,
-  cLevel: undefined
-}
-
-function sumSalary(salaryObjact){
-  let sum = 0;//потрібно створити змінну, яка накаплює нашу суму
-  for(let key in salaryObjact){// перевіряємо ключі в нашому об'єкті
-    if(typeof salaryObjact[key]==='number'){//якщо тип даних нашого обєкта равен number
-    sum+=salaryObjact[key]//sum = sum + salaryObjact[key]// тоді ми накопичуємо суму.
-    //до суми додаємо всі ключі в нашому об'єкті
-  }
-}
-  return sum;
-}
-console.log(sumSalary(departmentSalaryInCompany1));
-console.log(sumSalary(departmentSalaryInCompany2));
