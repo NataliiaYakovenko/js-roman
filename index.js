@@ -1,41 +1,78 @@
 // Задача  for...in - 
-//Написати функцію, яка приймає об'єкт і виводить значення всіх властивостей
-// оформленні *...*, ключі формленні "..."
+//  У нас є об'єкт з зарплатами повсім відділем
+//Написати функцію, яка повертає загальну суму витрачену на зарплату всх відділів
 
-const obj ={
-    key1: 'value1',
-    key2: 'value2',
-    key3: 'value3',
-    key4: 'value4',
-    key5: 'value5',
+//Варіант мій
+/*const departmentSalary = {
+  HR: 120000,
+  development: 5500000,
+  PR: 50000,
+  marketing:120000,
+  assistant: 'undefind',
 }
-function stylingObject(obj){
-    for(let key in obj){
-        console.log(`"${key}" :>> in *${obj[key]}*`);
-    }
+function amountSpentSalary(departmentSalary){
+ let amount = 0;
+ for(let key in departmentSalary){
+  if(typeof departmentSalary[key]==='number'){
+    amount+=departmentSalary[key];
+  }
 }
-console.log(stylingObject(obj));
-//--------------------------------------------------
+return amount;
 
-
-
-const user ={
-    name: 'Nataliia',
-    surname: 'Yakovenko',
-    age: 41,
-    'favorite color': 'red',
-    movie: 'Pretty woman',
-    avatar: 'http://...........'
+  }
+    console.log(amountSpentSalary(departmentSalary));*/
+    //--------------------------------------------------------------------------------
+    
+//Варіант Роми    
+/*const departmentSalary = {
+  HR: 120000,
+  development: 5500000,
+  PR: 50000,
+  marketing:120000,
+  assistant: 'undefind',
 }
-for(let key in user){
-    //console.log(key); варіант 1
-    console.log(`${key} :>> in  ${user[key]}`);
+function sumSalary(salaryObjact){
+  let sum = 0;//потрібно створити змінну, яка накаплює нашу суму
+  for(let key in salaryObjact){// перевіряємо ключі в нашому об'єкті
+    if(typeof salaryObjact[key]==='number'){//якщо тип даних нашого обєкта равен number
+    sum+=salaryObjact[key]//sum = sum + salaryObjact[key]// тоді ми накопичуємо суму.
+    //до суми додаємо всі ключі в нашому об'єкті
+  }
+}
+  return sum;
+}
+console.log(sumSalary(departmentSalary));*/
+//----------------------------------------------------------------------------------------
+
+//Варіант Роми коли декілька підприємств
+
+const departmentSalaryInCompany1 = {
+  HR: 120000,
+  development: 5500000,
+  PR: 50000,
+  marketing:120000,
+  assistant: undefined,
+}
+const departmentSalaryInCompany2 = {
+  HR: 500000,
+  JS: 5500000,
+  PR: 50000,
+  QA:800000,
+  clojure: 250000,
+  frontend: 365800,
+  strategyExecution: undefined,
+  cLevel: undefined
 }
 
-    // синтаксис
-    /*
-    for ( змінна  in  об'єкт){
-    код, що виконується до кожної властивості}
-    змінні - яка буде приймати значення ключів властивостей
-    об'єкт - ключи якого ми хочемо перебрати
-    */
+function sumSalary(salaryObjact){
+  let sum = 0;//потрібно створити змінну, яка накаплює нашу суму
+  for(let key in salaryObjact){// перевіряємо ключі в нашому об'єкті
+    if(typeof salaryObjact[key]==='number'){//якщо тип даних нашого обєкта равен number
+    sum+=salaryObjact[key]//sum = sum + salaryObjact[key]// тоді ми накопичуємо суму.
+    //до суми додаємо всі ключі в нашому об'єкті
+  }
+}
+  return sum;
+}
+console.log(sumSalary(departmentSalaryInCompany1));
+console.log(sumSalary(departmentSalaryInCompany2));
