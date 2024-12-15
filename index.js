@@ -10,9 +10,16 @@ const array3 = array2.slice(1);
 console.log(array3);
 //-----------------------------------------------------------------------------
 // 3. З масиву [1,2,3,4,5] зробіть масив [1, 'w', 'tr-td', 2,3,4,'vv',5,'aa']
+//Варіант мій
 const array4 = [1, 2, 3, 4, 5];
 array4.splice(2, 4, "w", "tr-td", 2, 3, 4, "vv", 5, "aa");
 console.log(array4);
+//Варіант Роми
+const array5 = [1, 2, 3, 4, 5];
+array5.splice(1,0,'w', 'tr-td');
+array5.splice(6,0,"vv");
+array5.push('aa')
+
 //-----------------------------------------------------------------------------
 
 //Задача*
@@ -32,7 +39,7 @@ console.log(array4);
 const array = [1, 2, 3, 4, 4];
 
 function checksIdenticalElementsInArray(array) {
-  for (let i = 0; i < array.length; i++) {    // Перевіряємо елементи до передостаннього
+  for (let i = 0; i < array.length; i++) {    // Перевіряємо елементи 
     if (array[i] === array[i + 1]) {    // Якщо поточний елемент та наступний однакові
       return true;
     } 
