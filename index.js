@@ -1,56 +1,72 @@
-// ПРАКТИКА МЕТОДИ МАСИВУ
-/*Задача1.
-Дано два масиви [1,2,3] і [4,5,6]
-Потрібно об'єднати в один масив щоб вийшло [1,2,3,4,5,6]
- */
-const array1 = [1,2,3];
-const array2 = [4,5,6];
-const array3 = array1.concat(array2);
-console.log(array3);
+// МЕТОД МАСИВУ slise (немутуючий)
+//array.slise - викорисовується для повернення нового масиву, який складається тільки з коїсь певної частини вихідного масиву
+//array.slise([stsrt],[end]) - [stsrt] -це з якого індексу ми починаємо копіювати масив
+//                              якщо [stsrt] буде від'ємним числом, то [stsrt] буде відлічуватись з кінця масиву
+//                           -  [end]  -це до якого індексу ми копіюємо масив - end не включаємо
+//Копіює масив з індексу М(включно) до індексу N(не включаючі)
+//array.slise(M,N) - синтаксис
 
-// коли масивів більше одного
-const array01 = [1,2,3];
-const array02 = [4,5,6];
-const array03 = [1,2,3];
-const array04 = [4,5,6];
-const array05 = array01.concat(array02,array03,array04);
-console.log(array05)
+const array1 = [1, 2, 3, 4, 5, 6, 7, 8];
+const array2 = array1.slice(2, 4);
+console.log(array2);
 
+//уразі якщо я не передаю end, копіювання буде відбуватися від start до array01.length(до кінця масиву)
+const array01 = [1, 2, 3, 4, 5, 6, 7, 8];
+const array02 = array01.slice(2);
+console.log(array02);
+//------------------------------------------------------------------------------
+//Задача. В масивах ми можемо зберігати будь-які типи даних, навіть об'єкти
+const users = [
+  {
+    //масив, в якому об'єкти
+    name: "Nataliia",
+    lastName: "Yakovenko",
+  },
+  {
+    name: "Roland",
+    lastName: "Simonyan",
+  },
+  {
+    name: "Bogdan",
+    lastName: "Bondarenko",
+  },
+];
+//потім Нам потрібно зробити копію маcиву users
+const newUsers = users.slice(); //newUsers - це поверхнева копія
+//якщо зміни відбуваються в поверхневій копії newUsers, зміниться і оригінал users
+//потім Богдану потрібно змінити ім'я на Тарас
+newUsers[2].name = "Taras";
+console.log(newUsers[2]);
+
+console.log(newUsers); // перевіряємо зміни
+console.log(users); // перевіряємо зміни
 //-------------------------------------------------------------------------------
-/*Задача2.
-Дано масив [1,2,3] 
-Потрібно з нього зробити масив [3,2,1] 
- */
-const array4 = [1,2,3];
-console.log(array4.reverse()); 
-//-------------------------------------------------------------------------------
-/*Задача3.
-Дано масив [3,4,5] 
-Додайте йому в кінець елементи 4,8,10
- */
-const array5 = [3,4,5];
-console.log(array5.push(4,8,10));
-console.log(array5);
-//-------------------------------------------------------------------------------
-/*Задача4.
-Дано масив ['aaa','bbb','ccc'] 
-Виведіть у консоль останній елемент та видаліть його з масиву
- */
-const array6 = ['aaa','bbb','ccc'];
-console.log(array6.pop());
-console.log(array6);
-//------------------------------------------------------------------------------- 
-/*Задача5.
-Дано масив ['3',7,10] 
-Додайте йому на початок елементи 2,8
- */
-const array7 = ['3',7,10];
-console.log(array7.unshift(2,8));
-console.log(array7);
-//-------------------------------------------------------------------------------  
-/*Задача6.
-Дано масив ['3',7,10] 
-Отримайте з цього масиву рядок
- */
-const array8 = ['3',7,10];
-console.log(array8.join(','))
+//Якщо нам потрібно зробити копію з поверхневої копії
+const users1 = [                    //оригінал
+  {
+    //масив, в якому об'єкти
+    name: "Nataliia",
+    lastName: "Yakovenko",
+  },
+  {
+    name: "Roland",
+    lastName: "Simonyan",
+  },
+  {
+    name: "Bogdan",
+    lastName: "Bondarenko",
+  },
+];
+const newUsers1 = users1.slice(); //копія
+const copUsers = newUsers1.slice(); //копія//copUsers - це поверхнева копія з поверхневої копії
+
+console.log(users1);
+console.log(newUsers1);
+console.log(copUsers)
+
+copUsers[0].lastName = 'Simonnyan';
+
+console.log(users1);
+console.log(newUsers1);
+console.log(copUsers)
+// Зміни відбулись у всіх копіях і воригіналі
