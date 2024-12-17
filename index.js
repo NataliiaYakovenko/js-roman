@@ -1,36 +1,36 @@
-//argument - схожий на масив, але він НЕ є масивом
+//Створити новий масив, кожен елемент якого = елементи зі старого масиву*2
 
-function t(){
-    arguments[0]
-    arguments[1]
-    arguments[2]
-    arguments[3]= 'Nataliia'
-    console.log(arguments);
+const array = [2,4,6,1,8,9]// старий масив
 
+//вирішення через функцію декларейшен
+function valueMultiplyTwo(item){
+return item*2;
 }
-t(1,2,3,4,5,6,);
+const newArray = array.map(valueMultiplyTwo) //новий масив
+console.log(newArray);
 
-//console.log(t);
-console.dir(t) //console.dir - дозволяє більш розгорнуто передивитись функцію
+//вирішення через стрілкову функцію
+const newArray1 = array.map((item)=>{
+  return item*2;
+}).reverse()
+console.log(newArray1);
+//-------------------------------------------------------
+//Потрібно взяти і змінити порядок слідування елементів в масиві newArray1 на протилежний
+//варіант1
+newArray1.reverse();
+console.log(newArray1);
 
-//будь-яка JS функція - є об'єкт
-//-------------------------------------------------------------------------
-//Приклад argument
-//функція, яка буде додавати два числа
-function sum (a,b){
- console.log(arguments);
- return a+b;
-}
-//console.log(sum(3, 4));
-//--------------------------------------------------------------------------
-//Створити нормальний масив із об'єкта arguments
-//Написати функцію, яка повертає суму БУДЬ-ЯКОЇ кількості переданої в неї аргументів
-function sum (){
-const arrayArgs = Array.from(arguments)
-let sum = 0;
-for(let i = 0;i < arrayArgs.length; i++){
-    sum += arrayArgs[i];
-}
-return sum;
-   }
-   console.log(sum(1,2,3,4,5,6,7,8,9));
+//варіант2
+const newArray2 = array.map((item)=>{
+    return item*2;
+  }).reverse() //спочатку працює map потім reverse()
+  //такий метод називається chaining - об'єднання методів у ланцюжок
+  console.log(newArray2);
+  //----------------------------------------------------------
+  //Потрібно зробита з масива рядочок розділений комами
+
+const newArray3 = array.map((item)=>{
+    return item*2;
+  }).reverse().join(',');
+
+  console.log(newArray3);
