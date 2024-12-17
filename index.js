@@ -1,36 +1,47 @@
-//Створити новий масив, кожен елемент якого = елементи зі старого масиву*2
+//array.sort - використовується для сортування елементів в масиві (мутуючий)
+//array.sort - переставляє елементи масиву на місцях. Можна задавати власний поряжок
+//array.sort([compareFunction]) - синтакси array.sort
 
-const array = [2,4,6,1,8,9]// старий масив
+const array = [2,5,8,9,88,43,5,3]
+//Відсортувати масив за зростанням
+array.sort() //-сортування за зростанням (unicode)
+console.log(array);
 
-//вирішення через функцію декларейшен
-function valueMultiplyTwo(item){
-return item*2;
+//як буде сортувати масив з літерами за зростанням
+const array1 =['bbb','aaa','aba','acb']
+array1.sort()       //сортування за зростанням (unicode)
+console.log(array1);
+
+//сортувати за власним порядком
+function compareFunction(a,b,){ // функція компоратор
+                   // a - поточне переглядаєме число
+                   // b - наступне число, яке слідує за поточним
 }
-const newArray = array.map(valueMultiplyTwo) //новий масив
-console.log(newArray);
+//Функція компоратор повинна повернути (return) одне з трьох можливих значень:
+/*
+-1    - якщо потрібно щоб спочатку було значеня а потім b
+ 0    - елементи залишаються на місці
+ 1    - якщо потрібно щоб спочатку було значеня b потім a
+*/
 
-//вирішення через стрілкову функцію
-const newArray1 = array.map((item)=>{
-  return item*2;
-}).reverse()
-console.log(newArray1);
-//-------------------------------------------------------
-//Потрібно взяти і змінити порядок слідування елементів в масиві newArray1 на протилежний
+//відсортувати за зростанням
 //варіант1
-newArray1.reverse();
-console.log(newArray1);
+const array2 = [2,5,8,9,88,43,5,3]
+function compareFunction(a,b,){
+   if(b>a){
+    return -1
+   } else {
+    return 1
+   }
+}
+array2.sort(compareFunction);
+console.log(array2);
 
-//варіант2
-const newArray2 = array.map((item)=>{
-    return item*2;
-  }).reverse() //спочатку працює map потім reverse()
-  //такий метод називається chaining - об'єднання методів у ланцюжок
-  console.log(newArray2);
-  //----------------------------------------------------------
-  //Потрібно зробита з масива рядочок розділений комами
-
-const newArray3 = array.map((item)=>{
-    return item*2;
-  }).reverse().join(',');
-
-  console.log(newArray3);
+ //варіант2 - працює тільки з цифрами
+ const array3 = [2,5,8,9,88,43,5,3]
+ function compareNumbers(a,b){
+    return a-b // зростання від меньшого до більшого
+    // або  b-a - зростання від більшого до меньшого
+ }
+ array3.sort(compareNumbers);
+console.log(array3);
