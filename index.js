@@ -1,14 +1,13 @@
-//array.filter - використовується для створення нового масиву, який містить лише ті елементи, які задовільняють певній умові (немутуючий)
+//array.reduce - використовується для обчислення якогось ОДНОГО значення на основі всіх елементів масиву (немутуючий)
+//array.reduce - зводить всі елементи масиву до якогось одного результуючого значення
+//array.reduce(calback, initialValue) - синтакс
 
-//Задача. 
-//Створити новий масив, в який увійдут тільки парні елементи попереднього масиву
-const numberArray1 = [5,3,-5,21,66,-8,6,4,9]
-function filterFunction1(item){
-   if(item % 2 === 0){
-      return true
-   } else {
-      return false
-   }
+const numberArray = [2,-5,6-9,44,86,3]
+// потрібно знайти суму umberArra
+function reducer(accumulator, currentItem){
+// те, що повертає reducer - це оновлений accumulator
+return accumulator + currentItem;
 }
-const newNumberArray1 = newNumberArray.filter(filterFunction1)
-console.log(newNumberArray1);
+
+const sum = numberArray.reduce(reducer, 0);//0 це початкове значення, з якого ми починаємо рахувати суму
+console.log(sum);
