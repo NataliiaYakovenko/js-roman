@@ -1,47 +1,15 @@
-//array.sort - використовується для сортування елементів в масиві (мутуючий)
-//array.sort - переставляє елементи масиву на місцях. Можна задавати власний поряжок
-//array.sort([compareFunction]) - синтакси array.sort
+//array.filter - використовується для створення нового масиву, який містить лише ті елементи, які задовільняють певній умові (немутуючий)
+//array.filter(callback)
+//callback буде викликатись для кожного елементу масиву, і ця callback функція в середині фільтру вона повинна повертати або true/false для кожного елементу масиву
 
-const array = [2,5,8,9,88,43,5,3]
-//Відсортувати масив за зростанням
-array.sort() //-сортування за зростанням (unicode)
-console.log(array);
-
-//як буде сортувати масив з літерами за зростанням
-const array1 =['bbb','aaa','aba','acb']
-array1.sort()       //сортування за зростанням (unicode)
-console.log(array1);
-
-//сортувати за власним порядком
-function compareFunction(a,b,){ // функція компоратор
-                   // a - поточне переглядаєме число
-                   // b - наступне число, яке слідує за поточним
+const numberArray = [5,3,-5,21,66,-8,6,4,9]
+//Відфільтрувати масив щоб залишились тільки додатні числа (числа > 0)
+function filterFunction(item){
+if(item > 0){
+   return true
+} else {
+   return false
 }
-//Функція компоратор повинна повернути (return) одне з трьох можливих значень:
-/*
--1    - якщо потрібно щоб спочатку було значеня а потім b
- 0    - елементи залишаються на місці
- 1    - якщо потрібно щоб спочатку було значеня b потім a
-*/
-
-//відсортувати за зростанням
-//варіант1
-const array2 = [2,5,8,9,88,43,5,3]
-function compareFunction(a,b,){
-   if(b>a){
-    return -1
-   } else {
-    return 1
-   }
 }
-array2.sort(compareFunction);
-console.log(array2);
-
- //варіант2 - працює тільки з цифрами
- const array3 = [2,5,8,9,88,43,5,3]
- function compareNumbers(a,b){
-    return a-b // зростання від меньшого до більшого
-    // або  b-a - зростання від більшого до меньшого
- }
- array3.sort(compareNumbers);
-console.log(array3);
+const newNumberArray = numberArray.filter(filterFunction)
+console.log(newNumberArray);
