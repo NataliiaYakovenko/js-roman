@@ -54,7 +54,25 @@ if(dog2.age > dog1.age){
     return-1
 }
 })*/
+
 //variant2
-dogArray.sort((dog1,dog2)=>{
+/*dogArray.sort((dog1,dog2)=>{
 return dog2.age - dog1.age;
+})*/
+//------------------------------------------------------------------------------
+//Задача. Відсортувати усіх собак крім білих
+//variant1
+/*const newDogArray = dogArray.filter((dog)=>{
+    if(dog.color === 'white'){
+        return true;
+    }else {
+        return false;
+    }
 })
+console.log(newDogArray);*/
+
+//variant2
+const newDogArray = dogArray.filter((dog)=>{
+    return dog.color === 'white'
+})
+console.log(newDogArray);
