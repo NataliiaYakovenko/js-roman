@@ -1,13 +1,46 @@
-//array.reduce - використовується для обчислення якогось ОДНОГО значення на основі всіх елементів масиву (немутуючий)
-//array.reduce - зводить всі елементи масиву до якогось одного результуючого значення
-//array.reduce(calback, initialValue) - синтакс
+// ПРАКТИКА МАСИВИ sort
 
-const numberArray = [2,-5,6-9,44,86,3]
-// потрібно знайти суму umberArra
-function reducer(accumulator, currentItem){
-// те, що повертає reducer - це оновлений accumulator
-return accumulator + currentItem;
-}
+const dogArray = [
+  {
+    nickname: "Tuzic",
+    color: "black",
+    weght: 3,
+    age: 2,
+  },
+  {
+    nickname: "Doly",
+    color: "white",
+    weght: 5,
+    age: 3,
+  },
+  {
+    nickname: "Fagot",
+    color: "black",
+    weght: 9,
+    age: 5,
+  },
+  {
+    nickname: "Stus",
+    color: "black",
+    weght: 15,
+    age: 1,
+  },
+];
+//Задача. Відсортувати собак за вагою на збільшення у порядку зростання
+//variant1
+dogArray.sort((dog1, dog2) => {
+  //dog1, dog2 - два сусідніх об'єкта
+  if (dog1.weght < dog2.weght) {
+    // уразі якщо у вес у собаки1 меньше ніж у собаки2
+    return -1;
+  } else {
+    //уразі якщо у вес у собаки1 більше ніж у собаки2
+    return 1;
+  }
+});
 
-const sum = numberArray.reduce(reducer, 0);//0 це початкове значення, з якого ми починаємо рахувати суму
-console.log(sum);
+//variant2
+dogArray.sort((dog1,dog2)=>{
+    //return dog1.weght - dog2.weght; //від меньшого до більшого
+    //return dog2.weght - dog1.weght; //від більшого до меншого
+})
