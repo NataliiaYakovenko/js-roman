@@ -28,7 +28,7 @@ const dogArray = [
 ];
 //Задача. Відсортувати собак за вагою на збільшення у порядку зростання
 //variant1
-dogArray.sort((dog1, dog2) => {
+/*dogArray.sort((dog1, dog2) => {
   //dog1, dog2 - два сусідніх об'єкта
   if (dog1.weght < dog2.weght) {
     // уразі якщо у вес у собаки1 меньше ніж у собаки2
@@ -37,10 +37,24 @@ dogArray.sort((dog1, dog2) => {
     //уразі якщо у вес у собаки1 більше ніж у собаки2
     return 1;
   }
-});
+});*/
 
 //variant2
-dogArray.sort((dog1,dog2)=>{
+//dogArray.sort((dog1,dog2)=>{
     //return dog1.weght - dog2.weght; //від меньшого до більшого
     //return dog2.weght - dog1.weght; //від більшого до меншого
+//})
+//-----------------------------------------------------------------------
+// Задача. Відсортувати собак від найстаршого до молодшого
+//variant1
+/*dogArray.sort((dog1,dog2)=>{
+if(dog2.age > dog1.age){
+    return 1;
+}else {
+    return-1
+}
+})*/
+//variant2
+dogArray.sort((dog1,dog2)=>{
+return dog2.age - dog1.age;
 })
