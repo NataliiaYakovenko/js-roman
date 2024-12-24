@@ -1,78 +1,64 @@
-// ПРАКТИКА МАСИВИ sort
+// Створюємо власний масив
 
-const dogArray = [
-  {
-    nickname: "Tuzic",
-    color: "black",
-    weght: 3,
-    age: 2,
-  },
-  {
-    nickname: "Doly",
-    color: "white",
-    weght: 5,
-    age: 3,
-  },
-  {
-    nickname: "Fagot",
-    color: "black",
-    weght: 9,
-    age: 5,
-  },
-  {
-    nickname: "Stus",
-    color: "black",
-    weght: 15,
-    age: 1,
-  },
-];
-//Задача. Відсортувати собак за вагою на збільшення у порядку зростання
-//variant1
-/*dogArray.sort((dog1, dog2) => {
-  //dog1, dog2 - два сусідніх об'єкта
-  if (dog1.weght < dog2.weght) {
-    // уразі якщо у вес у собаки1 меньше ніж у собаки2
-    return -1;
-  } else {
-    //уразі якщо у вес у собаки1 більше ніж у собаки2
-    return 1;
-  }
-});*/
+/*function MyArray(){
+    this.length = 0; //масив має свою довжину
 
-//variant2
-//dogArray.sort((dog1,dog2)=>{
-    //return dog1.weght - dog2.weght; //від меньшого до більшого
-    //return dog2.weght - dog1.weght; //від більшого до меншого
-//})
-//-----------------------------------------------------------------------
-// Задача. Відсортувати собак від найстаршого до молодшого
-//variant1
-/*dogArray.sort((dog1,dog2)=>{
-if(dog2.age > dog1.age){
-    return 1;
-}else {
-    return-1
-}
-})*/
-
-//variant2
-/*dogArray.sort((dog1,dog2)=>{
-return dog2.age - dog1.age;
-})*/
-//------------------------------------------------------------------------------
-//Задача. Відсортувати усіх собак крім білих
-//variant1
-/*const newDogArray = dogArray.filter((dog)=>{
-    if(dog.color === 'white'){
-        return true;
-    }else {
-        return false;
+    this.push = function(value){ //значення яке потрібно додати до масиву
+          // значення value потрібно додати в КІНЕЦЬ масиву
+     this[this.length] = value;
+     this.length++;
+     return this.length;     
     }
-})
-console.log(newDogArray);*/
+};
 
-//variant2
-const newDogArray = dogArray.filter((dog)=>{
-    return dog.color === 'white'
-})
-console.log(newDogArray);
+const array = new MyArray();
+array.push(1);
+array.push(2);*/
+//-----------------------------------------------------------------------------------
+
+// перепишіть push таким чином щоб push міг приймати та додавав до масиву будь-яку кількість переданих елементів
+/*function MyArray(){
+    this.length = 0; 
+    
+    this.push = function(value){ 
+        for(let i =0; i < arguments.length; i++){
+            this[this.length] = arguments[i];
+            this.length++;
+        }
+        return this.length;     
+    }
+}
+const array = new MyArray();
+array.push(1);
+array.push(2);
+array.push(3,4,77,44,59,5)*/
+//-----------------------------------------------------------------------------
+// Видалити останній елемент
+
+/*this.pop = function(){
+if(this.length > 0){
+    //1 Зберегти останні елемент
+    const lastItem = this[this.length - 1];
+    //2 Видалити останній елемент із масиву
+    delete this[this.length - 1];
+    //3 Зменшити довжину масиву на 1
+    this.length--;
+    //4 Повернути останній елемент
+    return lastItem;
+} else {
+    return undefined;
+}
+}
+const array = new MyArray();
+array.push(1);
+array.push(2);
+array.push(3,4,77,44,59,5);*/
+//----------------------------------------------------------------------
+
+this.forEach = function(calback){
+
+}
+const array = new MyArray();
+array.push(1);
+array.push(2);
+array.push(3,4,77,44,59,5);
