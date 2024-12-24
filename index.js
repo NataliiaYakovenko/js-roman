@@ -1,50 +1,50 @@
-
+// Створюємо власний масив
+//масив пишимо через функцію констрктор
 function MyArray() {
-    this.length = 0; // масив має свою довжину
-    this.data = {}; // масив буде зберігати елементи як об'єкт
+  this.length = 0; //у цього масива є довжина, яка дорівнює 0
 
-    // push метод, що додає кілька елементів
-    this.push = function(...values) {
-        for (let i = 0; i < values.length; i++) {
-            this[this.length] = values[i];
-            this.length++;
-        }
-        return this.length;
+  //додати через push будь - яку кількість переданих елементів
+  this.push = function (value) {
+    for (let i = 0; i < arguments.length; i++) {
+      this[this.length] = arguments[i]; // в поточну довжину запихуємо значення
+      this.length++; //потрібно збільшити довжуну масива на 1
     }
+    return this.length; //повертаємо поточну довжину масива
+  };
 
-    // pop метод для видалення останнього елемента
-    this.pop = function() {
-        if (this.length > 0) {
-            const lastItem = this[this.length - 1];
-            delete this[this.length - 1]; // видалення останнього елемента
-            this.length--; // зменшення довжини
-            return lastItem; // повертає останній елемент
-        } else {
-            return undefined; // якщо масив порожній
-        }
+  this.pop = function () {
+    if (this.length > 0) {
+      //якщо довжина масив більше 0
+      //1. Зберегти останній елемент
+      const lastItem = this[this.length - 1]; //потрібно від поточної довжини масива - 1
+      //2.Видалити останній елемент з масиву
+      delete this[this.length - 1];
+      //3.Після видалення останнього елементу нам потрібно зменшити довжину масиву на 1
+      this.length--;
+      //4. Повернути останній елемент
+      return lastItem;
+    } else {
+      return undefined;
     }
+  };
 
-    // forEach метод для обробки кожного елемента
-    this.forEach = function(callback) {
-        for (let i = 0; i < this.length; i++) {
-            callback(this[i], i, this);
-        }
+  this.forEach = function (callback) {
+    for (let i = 0; i < this.length; i++) {
+      callback(this[i], i, this);
     }
+  };
 }
-
-// Створення нового екземпляра MyArray
-const array = new MyArray();
-
-// Додавання елементів
+const array = new MyArray(); //створюємо мій масив на снові масива
+//додаємо 1
 array.push(1);
+//додаємо 2
 array.push(2);
-array.push(3, 4, 77, 44, 59, 5);
+array.push(3, 4, 5, 6, 7, 8);
+console.log(array)
 
-// Тестуємо метод pop
-console.log(array.pop()); // Видалить 5
-console.log(array.pop()); // Видалить 59
-
-// Тестуємо метод forEach: виводимо квадрати кожного елемента
-array.forEach(item => {
-    console.log(item ** 2); // Виводимо квадрат числа
+array.pop()
+console.log(array);
+//Відконсольлогувати квадрати кожного числа в масив array
+array.forEach((item) => {
+  console.log(item ** 2); //item виведений у квадрат
 });
