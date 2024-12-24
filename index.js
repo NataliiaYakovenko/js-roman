@@ -14,10 +14,10 @@ const cat2 = {              // об'єкт кота2
 // прототип
 const catMethods = {          // методи кота
     run: function(){
-        console.log('Cat is running');
+        console.log(`${this.name} is running`);
     },
     myau: function(){
-        console.log('Myau');
+        console.log(`${this.name} said myau`);
     }
 }
 //Потрібно прикрепити catMethods до cat
