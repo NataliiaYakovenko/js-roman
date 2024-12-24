@@ -1,27 +1,50 @@
-//Prototype - прототипи масиву
 
-const cat = {              // об'єкт кота
-    name: 'Barsik',
-    color: 'red',
-    age: 1
-}
+function MyArray() {
+    this.length = 0; // масив має свою довжину
+    this.data = {}; // масив буде зберігати елементи як об'єкт
 
-const cat2 = {              // об'єкт кота2
-    name: 'Murzik',
-    color: 'black',
-    age: 5
-}
-// прототип
-const catMethods = {          // методи кота
-    run: function(){
-        console.log(`${this.name} is running`);
-    },
-    myau: function(){
-        console.log(`${this.name} said myau`);
+    // push метод, що додає кілька елементів
+    this.push = function(...values) {
+        for (let i = 0; i < values.length; i++) {
+            this[this.length] = values[i];
+            this.length++;
+        }
+        return this.length;
+    }
+
+    // pop метод для видалення останнього елемента
+    this.pop = function() {
+        if (this.length > 0) {
+            const lastItem = this[this.length - 1];
+            delete this[this.length - 1]; // видалення останнього елемента
+            this.length--; // зменшення довжини
+            return lastItem; // повертає останній елемент
+        } else {
+            return undefined; // якщо масив порожній
+        }
+    }
+
+    // forEach метод для обробки кожного елемента
+    this.forEach = function(callback) {
+        for (let i = 0; i < this.length; i++) {
+            callback(this[i], i, this);
+        }
     }
 }
-//Потрібно прикрепити catMethods до cat
-//Свойство cat яке вказує на прототип об'єкта
-//cat.__proto__  //cat.__(це два підкреслення)proto__(це два підкреслення)
-cat.__proto__ = catMethods  //прототипне посилання
-cat2.__proto__ = catMethods //прототипне посилання для кота2
+
+// Створення нового екземпляра MyArray
+const array = new MyArray();
+
+// Додавання елементів
+array.push(1);
+array.push(2);
+array.push(3, 4, 77, 44, 59, 5);
+
+// Тестуємо метод pop
+console.log(array.pop()); // Видалить 5
+console.log(array.pop()); // Видалить 59
+
+// Тестуємо метод forEach: виводимо квадрати кожного елемента
+array.forEach(item => {
+    console.log(item ** 2); // Виводимо квадрат числа
+});
