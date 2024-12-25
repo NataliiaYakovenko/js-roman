@@ -1,8 +1,10 @@
-// Створюємо власний масив
+// Прототипи
 //масив пишимо через функцію констрктор
 function MyArray() {
   this.length = 0; //у цього масива є довжина, яка дорівнює 0
+};
 
+function MyArrayPrototype () {
   //додати через push будь - яку кількість переданих елементів
   this.push = function (value) {
     for (let i = 0; i < arguments.length; i++) {
@@ -10,7 +12,7 @@ function MyArray() {
       this.length++; //потрібно збільшити довжуну масива на 1
     }
     return this.length; //повертаємо поточну довжину масива
-  };
+  },
 
   this.pop = function () {
     if (this.length > 0) {
@@ -26,25 +28,37 @@ function MyArray() {
     } else {
       return undefined;
     }
-  };
+  },
 
   this.forEach = function (callback) {
     for (let i = 0; i < this.length; i++) {
       callback(this[i], i, this);
     }
-  };
+  }
 }
+
+MyArray.prototype = new MyArrayPrototype;//прототипне посилання
+
 const array = new MyArray(); //створюємо мій масив на снові масива
 //додаємо 1
 array.push(1);
 //додаємо 2
 array.push(2);
 array.push(3, 4, 5, 6, 7, 8);
-console.log(array)
+console.log(array);
 
-array.pop()
+array.pop();
 console.log(array);
 //Відконсольлогувати квадрати кожного числа в масив array
 array.forEach((item) => {
   console.log(item ** 2); //item виведений у квадрат
 });
+
+
+//Яка різниця між __proto__  i .prototype
+
+//__proto__ - працює тільки тоді коли ми літерально створюємо о'єкт
+{
+  //
+}
+//.prototype - коли об'єкти створюються за допомогою конструктора
