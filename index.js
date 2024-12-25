@@ -1,64 +1,50 @@
-// Прототипи
-//масив пишимо через функцію констрктор
-function MyArray() {
-  this.length = 0; //у цього масива є довжина, яка дорівнює 0
-};
+// Прототипи Задача
+/* Завдання 1
+Створити функцію - конструктор для сходів (ladder)
+Об'єкт має властивість:
+curentStair - сходинка, на якій ми зараз знаходимиось. Початково = 0
 
-function MyArrayPrototype () {
-  //додати через push будь - яку кількість переданих елементів
-  this.push = function (value) {
-    for (let i = 0; i < arguments.length; i++) {
-      this[this.length] = arguments[i]; // в поточну довжину запихуємо значення
-      this.length++; //потрібно збільшити довжуну масива на 1
-    }
-    return this.length; //повертаємо поточну довжину масива
-  },
-
-  this.pop = function () {
-    if (this.length > 0) {
-      //якщо довжина масив більше 0
-      //1. Зберегти останній елемент
-      const lastItem = this[this.length - 1]; //потрібно від поточної довжини масива - 1
-      //2.Видалити останній елемент з масиву
-      delete this[this.length - 1];
-      //3.Після видалення останнього елементу нам потрібно зменшити довжину масиву на 1
-      this.length--;
-      //4. Повернути останній елемент
-      return lastItem;
-    } else {
-      return undefined;
-    }
-  },
-
-  this.forEach = function (callback) {
-    for (let i = 0; i < this.length; i++) {
-      callback(this[i], i, this);
-    }
-  }
+Об'єкт має методи: - метоти запихнути в .prototype
+up() - підіймає на сходинку вище
+down() - опускає на сходинку нижче
+showStair() - показує на якій сходинці ми зараз знаходимось
+ */
+function Labber() {
+  this.curentStair = 0;
 }
 
-MyArray.prototype = new MyArrayPrototype;//прототипне посилання
+function LabberPrototype() {
+  this.up = function () {
+    this.curentStair++;
+    return this;
+  };
 
-const array = new MyArray(); //створюємо мій масив на снові масива
-//додаємо 1
-array.push(1);
-//додаємо 2
-array.push(2);
-array.push(3, 4, 5, 6, 7, 8);
-console.log(array);
+  this.down = function () {
+    this.curentStair--;
+    return this;
+  };
 
-array.pop();
-console.log(array);
-//Відконсольлогувати квадрати кожного числа в масив array
-array.forEach((item) => {
-  console.log(item ** 2); //item виведений у квадрат
-});
+  this.showStair = function () {
+    return this.curentStair;
+  };
 
-
-//Яка різниця між __proto__  i .prototype
-
-//__proto__ - працює тільки тоді коли ми літерально створюємо о'єкт
-{
-  //
 }
-//.prototype - коли об'єкти створюються за допомогою конструктора
+
+Labber.prototype = new LabberPrototype();
+const labber = new Labber();
+
+/*console.log(labber.up())
+console.log(labber.up())
+console.log(labber.up())        //console.log для першої задачі
+console.log(labber.down())
+console.log(labber.showStair())*/
+
+/*Завдання 2
+Перепишіть методи таким чином щоб було використання ченінгу
+тобто щоб було можна об'єднати виклик методів у ланцюжок
+
+const labber = new Labber()
+Labber.up().up().down().showStair()
+ */
+console.log(labber.up().up().up().down().showStair()); 
+
