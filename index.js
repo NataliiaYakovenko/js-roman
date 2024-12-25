@@ -1,50 +1,38 @@
-// Прототипи Задача
-/* Завдання 1
-Створити функцію - конструктор для сходів (ladder)
-Об'єкт має властивість:
-curentStair - сходинка, на якій ми зараз знаходимиось. Початково = 0
+// This - у глобальній області видимості посилається на об'єкт Window
 
-Об'єкт має методи: - метоти запихнути в .prototype
-up() - підіймає на сходинку вище
-down() - опускає на сходинку нижче
-showStair() - показує на якій сходинці ми зараз знаходимось
- */
-function Labber() {
-  this.curentStair = 0;
-}
+'use strict' // - це директива, яку включають на початку js-файлу для встановлення
+//строго режиму.
+//Строгий режим накладує більш суворі правила і встановлює обмеження, як js-код
+//буде інтерпретуватися і виконуватись браузером
+//При використанні 'use strict' this не буде вказувати на Window, він буде казувати undefined
 
-function LabberPrototype() {
-  this.up = function () {
-    this.curentStair++;
-    return this;
-  };
+//Глобальна область
+console.log(this)  //=>Window    // this вказує на глобальний об'єкт Window  
+//-----------------------------------------------------------------
 
-  this.down = function () {
-    this.curentStair--;
-    return this;
-  };
+//Протестуємо this у локальній області видимості
 
-  this.showStair = function () {
-    return this.curentStair;
-  };
+//Function Declaration
+function test (){                
+ console.log(this);           //=>Undefined  // this вказує на функцію
 
 }
+test();
+//-------------------------------------------------------------------
+//Function Expression
+const test2 = function (){
+  console.log(this);         //=>Undefined // this вказує на функцію
+}
+test2()
 
-Labber.prototype = new LabberPrototype();
-const labber = new Labber();
-
-/*console.log(labber.up())
-console.log(labber.up())
-console.log(labber.up())        //console.log для першої задачі
-console.log(labber.down())
-console.log(labber.showStair())*/
-
-/*Завдання 2
-Перепишіть методи таким чином щоб було використання ченінгу
-тобто щоб було можна об'єднати виклик методів у ланцюжок
-
-const labber = new Labber()
-Labber.up().up().down().showStair()
- */
-console.log(labber.up().up().up().down().showStair()); 
-
+//{  } весь код огорнутий фігурними душками - контекст виконання
+//'use strict'строгий режим запустив такий механізм, що у Function Declaration i Function Expression
+//з'являється свій власний контекст виконання. Контекстам виконання функції стає сама функція,
+ // а не Глоюальний об'єкт Window
+//------------------------------------------------------------------------
+ //Arrow Function
+ const test3 = ()=>{
+  console.log(this);   //=>Window    // this вказує на глобальний об'єкт Window 
+ }
+ test3();
+ // у Arrow Function не має свого контексту виконання
