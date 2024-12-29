@@ -1,81 +1,69 @@
+//Об'єкт Date
+//отрмати поточну дату
+const date = new Date(); // new - визиваємо конструктор
+console.log(date);    //Sun Dec 29 2024 15:30:14 GMT+0200 (Eastern European Standard Time)
 
-/*Задача 1
-Написати функцію checkSpam, яка повертає true,
-якщо переданий рядок містить слова 'xxx'або 'viagra'.
-Якщо заборонених слів у рядку не має повертнути falce
+//Передати власну дату
+const date1 = new Date('09-22-2021')   // в душках дата - string
+console.log(date1)
 
-checkSpam('buy ViAgRa now') //true
-checkSpam('free xxxxxxxxxxxx') //true
-checkSpam('innocent rabbit') //falce
+                                  //МЕТОДИ Date
+
+//.getDate() - використовується для виведення дня місяця з дати
+const date2 = new Date('09-22-2021')   
+console.log(date2.getDate()) //  22
+//-----------------------------------------------------------------------------------------------
+//.getDay() - використовується для виведення дня тижня з дати
+// повертає число від 0 до 6, де:
+/* 0- неділя
+   1 - понеділок
+   2 - вівторок
+   3 - середі
+   4 - четвер
+   5 - п'ятниця
+   6 - субота
  */
-//variant1
-function checkSpam(string){
-   const stringLowerCase = string.toLowerCase()
-   //console.log(stringLowerCase)
-if(stringLowerCase.includes('xxx')|| stringLowerCase.includes('viagra')){
-  return true;
-} else{
-  return false;
+   const date3 = new Date('09-22-2021')   
+   console.log(date3.getDay()) // 3 - середа
+//-----------------------------------------------------------------------------------------------
+//.getFullYear() - використовується для виведення року з дати   
+const date4 = new Date('09-22-2021')   
+console.log(date4.getFullYear()) // 2021
+//-----------------------------------------------------------------------------------------------
+//.getHours() - використовується для виведення годин (без хвилин) з дати   
+const date5 = new Date('09-22-2021')   
+console.log(date5.getHours())
+//.getMinutes() - використовується для виведення хвилин з дати 
+//.getSeconds() - використовується для виведення секунд з дати 
+//-----------------------------------------------------------------------------------------------
+//.getTime -  використовується для виведення числового значення, 
+//що відповідає зазначеній даті за всесвітнім координованим часом since Jan 1, 1970
+const date6 = new Date('09-22-2021')   
+console.log(date6.getTime()) //1632258000000 - це кількість мілісекунд, яка пройшла з Jan 1, 1970 по 09-22-2021
+//----------------------------------------------------------------------------------------------
+
+//Задача. Знайти суму перших 1000000 чисел
+//Скільки часу зайняла ця операція
+
+let sum = 0;  // Створюємо змінну
+const time1 = new Date ()  // відрізок часу до початку операції 2
+
+for(let i = 0;i <= 1000000;i++){  //Через цикл накопичуємо суму
+  sum += i;
 }
 
+const time2 = new Date ()   // відрізок часу після початку операції 2
+
+console.log(sum); // Консолимо накопичену суму
+console.log(time1.getTime()) ;
+console.log(time2.getTime());
+console.log(time2.getTime() - time1.getTime())//кількість застрачених ілісекунд на операцію 2
+//--------------------------------------------------------------------------------------------
+//Приклад з консоль таймами
+console.time('operation'); // включили таймер. Початок таймеру
+
+let summa = 0;
+for(let i = 0;i <= 1000000;i++){   //Через цикл накопичуємо суму
+  summa += i;
 }
-console.log(checkSpam('buy ViAgRa now'));
-console.log(checkSpam('free xxxxxxxxxxxx'));
-console.log(checkSpam('innocent rabbit'));
-
-
-//variant2
-function checkSpam(string){
-  const stringLowerCase = string.toLowerCase()
-  return stringLowerCase.includes('xxx')|| stringLowerCase.includes('viagra')
- 
-}
-console.log(checkSpam('buy ViAgRa now'));
-console.log(checkSpam('free xxxxxxxxxxxx'));
-console.log(checkSpam('innocent rabbit'));
-
-
-//variant3
-function checkSpam(string){
-  const array = ['ViAgRa','xxx','drugs']
-  for(let i = 0;i < array.length;i++)
-  if(string.toLowerCase().includes(array[i])){
-     return true
-  }
-  return false;
-}
-console.log(checkSpam('buy ViAgRa now'));
-console.log(checkSpam('free xxxxxxxxxxxx'));
-console.log(checkSpam('innocent rabbit'));
-
-
-
-//-----------------------------------------------------------------------------------------
-/*Задача 2
-Написати функцію, яка перевіряє чи є переданий їй рядок - паліндромом, не зважаючі на регістр
-паліндром - це коли рядок з обох сторін читається однаково
-
- */
-
-/*Алгоритм рішення
-  1. Приймаємо строку від користувача
-  2. Приводимо строку до нижнього регістру
-  3. Перевернути строку 
-  4. Перевернуту строку перевірити з оригінальною строкою
- */
-function isPalindrom(string){
-  const newString = string.toLowerCase();
-  console.log(newString)
-  
-  const arrayString = newString.split('').reverse().join('')
-  console.log(arrayString);
-  
-  const result = newString === arrayString;
-  return result
-}
-
-
-
-console.log(isPalindrom('Anna'));
-console.log(isPalindrom('Mama'));
-console.log(isPalindrom('Barab'));
+console.timeEnd('operation')  // вимкнення таймеру. Вимикати можна декілька таймерів
