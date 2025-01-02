@@ -1,42 +1,25 @@
-//Class
-//Синтаксис класів
+//Задача
 /*
-class MyClass{
-//методи класу
-конструктор(){
-}
-method1() {......}
-method2() {......}
-method3() {......}
-}
-
-const user = new MyClass()
+Напичати клас Worker.
+У працівника є: ім'я, прізвище, ставка за один робочий день,
+ кількість відпрацьованих днів у цьому місяці
+ Метод, який повертає зарплату цього працівника за поточний місяць
 */
 
-class UserWoman {
-  constructor(name, lastname, age) {
+class Worker{
+  constructor(name,lastname,salary1Day,daysOfMonth){
     this.name = name;
     this.lastname = lastname;
-    this.age = age;
+    this.salary1Day = salary1Day;
+    this.daysOfMonth = daysOfMonth;
   }
-  getFullName(){
-     return `${this.name} ${this.lastname}`
+  getSalaryCurrentMonth(){
+     return this.salary1Day * this.daysOfMonth;
   }
 }
-const user01 = new UserWoman('Nataliia','Yakovenko',41)
-console.log(user01)
-console.log(user01.getFullName())
 
-const user02 = new UserWoman('Lidia','Yakovenko',71)
-console.log(user02);
-console.log(user02.getFullName())
+const worker1 = new Worker('Nataliia','Yakovenko',1200, 24)
+console.log(worker1)
+console.log(worker1.getSalaryCurrentMonth());
 
-console.log(user01.getFullName===user02.getFullName);
 
-//Правила клісів
-/*
-1. constructor() при створені класу є обов'язковий
-2. Ми не можемо самостійно звернутись до constructor()
-3. constructor() має бути тільки один
-4. Як і у функціях-конструктор назава класу повинна бути з великої літери
-*/
