@@ -1,36 +1,73 @@
-
-/*Задача
-є клач авто
-є клас паливо
-
-Порахувати загальну вагу автомобіля (вага авто + вага палива)
-об'єм * шільність
+//Задача
+/*
+Напичати клас Worker.
+У працівника є: ім'я, прізвище, ставка за один робочий день,
+ кількість відпрацьованих днів у цьому місяці
+ Метод, який повертає зарплату цього працівника за поточний місяць
 */
-class Fuil{
-  constructor(volume,density){
-     this.volume = volume;
-     this.density = density;
-  }
-  getWeight(){
-    return this.volume * this.density;
-  }
-}
-const benzin = new Fuil(50,0.9)
-console.log(benzin);
-console.log(benzin.getWeight());
 
-class Avto{
-  constructor(brand,owenWeight, fuil){
-      this.brand = brand;
-      this.owenWeight = owenWeight;
-      this.fuil = fuil;
+class Worker{
+  constructor(name,lastname,salary1Day,daysOfMonth,coefficient){
+
+    if(name === '' || lastname === ''){
+      throw new Error('Name and lastname must not be empty')
+    }
+
+    this.name = name;
+    this.lastname = lastname;
+
+    if(typeof salary1Day !== 'number' || typeof daysOfMonth !== 'number'){
+      throw new TypeError('Salary1Day and DaysOfMonth must be a number')
+    }
+
+    if(salary1Day < 0){
+      throw new RangeError('Salary1Day must be = or > 0')
+    }
+
+    this._salary1Day = salary1Day;
+
+    if(daysOfMonth < 0 || daysOfMonth > 31){
+      throw new RangeError('DaysOfMonth must be from 0 to 31')
+    }
+    
+    this.daysOfMonth = daysOfMonth;
+    this.coefficient = coefficient;
   }
-  //метод, який обчислює повну вагу
-  //його власна вагаo wenWeight + вага палива
-  getFullWeght(){
-    return this.owenWeight + this.fuil.getWeight();
+  //set - задавати значення
+  setSalary1Day(value){
+    if(typeof value !== 'number'){
+      throw new TypeError('Salary1Day must be a number')
+    }
+
+    if(value < 0){
+      throw new RangeError('Salary1Day must be = or > 0')
+    }
+
+    this._salary1Day = value;
+  }
+
+//get - отримувати значення
+getSalary1Day(){
+  return this._salary1Day;
+}
+
+  getSalaryCurrentMonth(){
+    if(this.coefficient){
+      return this._salary1Day * this.daysOfMonth * this.coefficient;
+    } else {
+      return this._salary1Day * this.daysOfMonth;
+    }
+      
   }
 }
-const car = new Avto('Toyota',4000,benzin)
-console.log(car)
-console.log(car.getFullWeght());
+
+const worker1 = new Worker('Nataliia','Yakovenko',1200, 24)
+console.log(worker1)
+console.log(worker1.getSalaryCurrentMonth());
+
+const worker2 = new Worker('Lidiia','Yakovenko',400, 21)
+console.log(worker2);
+console.log(worker2.setSalary1Day(500));
+console.log(worker2.getSalary1Day());
+
+
