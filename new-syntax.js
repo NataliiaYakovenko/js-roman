@@ -1,30 +1,63 @@
 
-class Test{
-  constructor(value1, value2){
-    this.key1 = value1;
-    this.key2 = value2;
+
+/*
+Задача
+Напишіть клас RangeValidator
+В класі має бути дві властивості: from , to
+from , to  - це числа за типом даних
+
+Завдання: реалізувати setter і getter для обох властивостей
+Реалізувати потрібно такі обмеження: from не може бути більше ніж to
+
+Реалізувати звичайни метод getRange, який має повертати масив цілих чисел з цього діпозону
+const object1 = new RangeValidator(2,5)
+object1.getRange() // повертає масив [2,3,4,5]
+
+*/
+
+class RangeValidator{
+  constructor(from,to){
+    this.to = to;
+    this.from = from;
   }
-  method (){
-    //тіло методу
+
+  set from(newValue){
+    if(typeof newValue !== 'number'){
+      throw new TypeError('From must be a number')
+    }
+    if(newValue > this.to){
+      throw new RangeError('From must not be more to')
+    }
+    this._from = newValue;
   }
-  //Варіант 2 для оголошення статичного методу - більш розповсюджений
-  static myStaticMethod(parameter){
-    //тіло функції - щось робимо
-    console.log(parameter);
+
+  get from(){
+    return this._from;
   }
+
+
+  set to(newValue){
+    if(typeof newValue !== 'number'){
+      throw new TypeError('To must be a number')
+    }
+
+    this._to = newValue;
+  }
+  
+  get to(){
+    return this._to;
+  }
+
+  getRange(){
+   const array = [];
+   for (let i = this.from; i <= this.to; i++){
+    array.push (i)
+   }
+   return array;
+  }
+
 }
-//Статистичні методи - методи, якими ми можемо скористатися 
-//не відбудовуючи екземпляр класу
-//В середині статистичних методі ми не використовуємо this
 
-//Варіант 1 для оголошення статичного методу
-/*Test.myStaticMethod = function(parameter){
-// тіло функції - щось ми робимо
-console.log(parametr)
-}*/
-
-Test.myStaticMethod(12345);
-
-
-const test1 = new Test('value1','value2')
-console.log(test1);
+const object1 = new RangeValidator(1,5)
+console.log(object1);
+console.log(object1.getRange());
