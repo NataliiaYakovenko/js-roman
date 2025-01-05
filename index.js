@@ -1,72 +1,178 @@
-class User{
-    constructor(name, surname,age){
-      this.name = name;
-      this.surname = surname;
-      this.age = age;
+/*Задача
+Клас Людина та похідний клас Студент.
+
+1. Створити клас людина з його властивостями
+- ПІБ
+- Дата народження
+- Стать
+
+2. Створити похідний клас Студент, який наслідує властивості класу Людина
+Додайте до класу Студент додаткові властивості
+- Рік всупу
+- Номер залікової книжки
+- Середній бал
+
+3. Реалізуйте наступні методи
+в класі Людина
+- greeting() - метод повертає привітання для людини в залежності від її статі
+(Mr or Mrs)
+
+в класі Студент
+-isExcellentStudent() - цей метод перевіряє чи є студент відмінником 
+на основі його середнього балу
+Якщо середній бал студента більше або дорівнює 90, 
+то метод поверне true, в іншому випадку - false
+*/
+
+class Person {
+  constructor(fullName, birthYear, gender) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+    this.gender = gender;
+  }
+  //-----
+  set fullName(value) {
+    if (typeof value !== "string") {
+      throw new TypeError("FullName must be a string");
     }
-    getFullName(){
-        return `${this.name} ${this.surname}`
+    if (value === " ") {
+      throw new RangeError("FullName must not be empty");
     }
-}
-class Moderator extends(User){
-constructor(name, surname,age){
-  super (name, surname,age)
-}
-getFullName(){
-    return `${this.name} ${this.surname} --> ${this.age}`
-}
-creatPost(text){
-console.log('Post successful created!')
-}
-deletePost(id){
-    console.log('Post successful deleted!')
-}
-}
+    this._fullName = value;
+  }
 
-class Admin extends(Moderator){
-    constructor(name, surname,age,uniquePrefix){
-   super(name, surname,age)
-   this.uniquePrefix = uniquePrefix;
+  get fullName() {
+    return this._fullName;
+  }
+  //-----
+  set birthYear(value) {
+    //тут потрібно валідувати дату
+    this._birthYear = value;
+  }
+
+  get birthYear() {
+    return this._birthYear;
+  }
+  //----
+  set gender(value) {
+    if (typeof value !== "string") {
+      throw new TypeError("Gender must be a string");
     }
-makeModerator(userId){
-    console.log('Moderator successful sett!')
-}
-deleteModerator(userId){
-    console.log('Moderator successful deleted!')
-}
+    this._gender = value;
+  }
 
-}
-class Support extends(Admin){
-    constructor(name,uniquePrefix){
-      super(name, null,null,uniquePrefix)
+  get gender() {
+    return this._gender;
+  }
+
+  greeting() {
+    let prefix; //в цю змінну ми будемо класти або Mr. або Mrs. в залежності від статі
+
+    if (this.gender === "male") {
+      prefix = "Mr";
+    } else if (this.gender === "female") {
+      prefix = "Mrs";
+    } else {
+      prefix = prompt(`${this.fullName}, how should we address you?`);
     }
-    getFullName(){
-        return `${this.name} --> ${this.uniquePrefix}`
-    }
+    return `Hello ${prefix} ${this.fullName}`;
+  }
 }
 
-const user1 = new User('Nataliia','Yakovenko',41)
-console.log(user1);
-console.log(user1.getFullName());
+class Student extends Person {
+  constructor(
+    fullName,
+    birthYear,
+    gender,
+    admissionYear,
+    studentId,
+    averageGrade
+  ) {
+    super(fullName, birthYear, gender);
+    this.admissionYear = admissionYear;
+    this.studentId = studentId;
+    this.averageGrade = averageGrade;
+  }
+  //-----
+  set admissionYear(value) {
+    //тут потрібно валідувати дату
+    this._admissionYear = value;
+  }
 
-const moderator1 = new Moderator('lidiia','Yakovenko',71)
-console.log(moderator1)
-console.log(moderator1.getFullName())
-console.log(moderator1.creatPost());
-console.log(moderator1.deletePost());
+  get admissionYear() {
+    return this._admissionYear;
+  }
+  //-----
+  set studentId(value) {
+    //тут потрібно валідувати дату
+    this._studentId = value;
+  }
 
-const admin1 = new Admin('Olexander','Yakovenko',72,'Head of Sales')
-console.log(admin1);
-console.log(admin1.getFullName())
-console.log(admin1.creatPost());
-console.log(admin1.deletePost());
-console.log(admin1.makeModerator());
-console.log(admin1.deleteModerator());
+  get studentId() {
+    return this._studentId;
+  }
+  //-----
+  set averageGrade(value) {
+    if (typeof value !== "number")
+      throw new TypeError("Average grade must be a number");
 
-const support1 = new Support('Evgen','Head of support')
-console.log(support1)
-console.log(support1.getFullName())
-console.log(support1.creatPost());
-console.log(support1.deletePost());
-console.log(support1.makeModerator());
-console.log(support1.deleteModerator());
+    if (value < 0 || value > 100) {
+      throw new RangeError("Average grade must be from 0 to 100");
+    }
+
+    this._averageGrade = value;
+  }
+
+  get averageGrade() {
+    return this._averageGrade;
+  }
+
+  isExcellentStudent() {
+    /*варіант 1
+    if(this.averageGrade >= 90){
+      return true
+    }else{
+      return false
+    }
+      
+   варіант 2 
+   const result = this.averageGrade >=90 ? true : false;   
+   return result;
+  }
+
+  варіант 3*/
+    return this.averageGrade >= 90;
+  }
+}
+
+const person1 = new Person("Nataliia Yakovenko", "1983", "female");
+console.log(person1);
+console.log(person1.greeting());
+
+const person2 = new Person("Evgen Yakovenko", "1976", "male");
+console.log(person2);
+console.log(person2.greeting());
+
+const student1 = new Student("Roland Simonyan", "1998", "male",2020,45678,95);
+console.log(student1);
+console.log(student1.greeting())
+console.log(student1.isExcellentStudent());
+
+const student2 = new Student("Boris Jons", "1998", "male",2020,114560678,90);
+console.log(student2);
+console.log(student2.greeting())
+console.log(student2.isExcellentStudent());
+
+const student3 = new Student("Fiona Smit", "1995", "female",2020,6766745678,75);
+console.log(student3);
+console.log(student3.greeting())
+console.log(student3.isExcellentStudent());
+
+const student4 = new Student("Omar Froter", "1989", "male",2020,45678,99);
+console.log(student4);
+console.log(student4.greeting())
+console.log(student4.isExcellentStudent());
+
+//робимо масив
+const arrayStudents =[student1,student2,student3,student4]
+console.log(arrayStudents);
