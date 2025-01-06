@@ -37,25 +37,50 @@
 
 Спадкування - це здатність до копіювання, можливість описати новий клас на основі вже існуючого
 ----------------------------------------------------------------------------------------------------
+
+Поліморфізм - дозволяє використовувати спільний інтерфейс(методи базового класу) через екземпляри
+похідних класів
+Суть поліморфізму полягає в тому, що ми можемо один і той саме код використовувати для об'єктів
+різних класів
+-----------------------------------------------------------------------------------------------------
+
+Переваги і недоліки ООП
+
+Переваги:
+1. Візуально код стає просішим
+2. Менше однакового коду
+3. Складні програми пишуться простіше
+4. Збільшується швидкість написання
+(достатньо швидко можимо прийти до мінімально працюючого прототипу)
+
+Недаліки:
+1. Важко зрозуміти та почати працювати
+2. Потребує більше пам'яті
+3. Іноді продуктивність коду може бути низька
+(із сучасними потужностями процесорів недолік №3 нівелюється)
+-----------------------------------------------------------------------------------------------------
 */
 
 class Figure {
+  //абстрактний клас
   constructor(sideQuantity) {
     this.sideQuantity = sideQuantity;
   }
 
-  set sideQuantity(value){
-   if(value < 0){
-    throw new RangeError('Side quantity cannot be less 0')
-   }
-   this._sideQuantity = value
+  set sideQuantity(value) {
+    if (value < 0) {
+      throw new RangeError("Side quantity cannot be less 0");
+    }
+    this._sideQuantity = value;
   }
 
-  get sideQuantity(){
-    return this._sideQuantity
+  get sideQuantity() {
+    return this._sideQuantity;
   }
 
-  getAera() {}
+  getArea() {
+    //абстрактні методи(абстрактний метод завжди буде пустим)
+  }
 }
 
 class Triangle extends Figure {
@@ -91,14 +116,15 @@ class Triangle extends Figure {
     if (value < 0) {
       throw new RangeError("Angle cannot be less 0");
     }
-    this._angle = value
+    this._angle = value;
   }
 
   get angle() {
     return this._angle;
   }
 
-  getAera() {
+  getArea() {
+    //віртуальний метод(метод що перевизначається у класі)
     return this.a * this.b * Math.sin(this.angle);
   }
 }
@@ -108,27 +134,78 @@ class Square extends Figure {
     super(4);
     this.a = a;
   }
- 
-  set a(value){
-    if(value < 0){
-      throw new RangeError('ide cannot be less 0')
+
+  set a(value) {
+    if (value < 0) {
+      throw new RangeError("ide cannot be less 0");
     }
-    this._a = value
+    this._a = value;
   }
 
-  get a (){
-    return this._a
+  get a() {
+    return this._a;
   }
 
-  getAera() {
+  getArea() {
+    //віртуальний метод(метод що перевизначається у класі)
     return this.a * this.a; //this.a **2
   }
 }
 
+class Circl extends Figure {
+  constructor(a) {
+    super();
+    this.a = a;
+  }
+
+  set a(value){
+  if(value < 0){
+    throw new RangeError('Radius cannot be less 0')
+  }
+  this._a = value;
+  }
+
+  get a(){
+    return this._a;
+  }
+
+  getArea(){
+   return Math.PI * Math.pow(this.a,2)
+  }
+  /*
+  Площа кола обчислюється за формулою:
+𝑆=𝜋*𝑟2
+ 
+де:
+S — площа кола,
+r — радіус кола,
+π (пі) — математична константа, яка приблизно дорівнює 3.14159.
+  */
+
+
+
+}
+
 const square = new Square(4);
 console.log(square);
-console.log(square.getAera())
+console.log(square.getArea());
 
-const triangle = new Triangle(5,5,1)
+const triangle = new Triangle(5, 5, 1);
 console.log(triangle);
-console.log(triangle.getAera())
+console.log(triangle.getArea().toFixed(2));
+
+const circul = new Circl(5)
+console.log(circul);
+console.log(circul.getArea().toFixed(2))
+
+/*Написати окрему функцію, яка буде приймати об'єкт якоїсь фігури і буде викликати у цієї
+і буде викликати у цієї фігури метод  getAera
+ */
+
+function getFigureArea(figure) {
+  if (figure instanceof Figure) {
+    return figure.getArea();
+  }
+  throw new TypeError("Parametra is not figure");
+}
+console.log(getFigureArea(square));
