@@ -143,36 +143,78 @@ class Student extends Person {
   варіант 3*/
     return this.averageGrade >= 90;
   }
+
+  //Написати статичний метод
+  //варіант1  reduce
+  static calculateAveregGrade(arrayStudents) {
+    const summa = arrayStudents.reduce((accumulator, student) => {
+      return accumulator + student.averageGrade;
+    }, 0);
+    return summa / arrayStudents.length;
+  }
+
+  //варіан 2   for
+  /*static calculateAveregGrade(arrayStudents) {
+    
+    if (arrayStudents.length === 0) {
+      return 0;
+    }
+
+    //перевірити на те, чи об'єкт в середині масиву arrayStudents є екземпляром класу Student
+    
+    
+    let sum = 0;
+    for (let i = 0; i < arrayStudents.length; i++) {
+      sum += arrayStudents[i].averageGrade;
+    }
+    return sum / arrayStudents.length;
+  }*/
+
+
+ //варіан 3   forEach
+/*static calculateAveregGrade(arrayStudents){
+  if(arrayStudents.length === 0){
+  return 0;
+  }
+  let sum = 0;
+  arrayStudents.forEach((student)=>{
+    sum += student.averageGrade;
+  })
+  return sum / arrayStudents.length
+}*/
+
+
+
 }
 
+
+
+
 const person1 = new Person("Nataliia Yakovenko", "1983", "female");
-console.log(person1);
-console.log(person1.greeting());
-
 const person2 = new Person("Evgen Yakovenko", "1976", "male");
-console.log(person2);
-console.log(person2.greeting());
 
-const student1 = new Student("Roland Simonyan", "1998", "male",2020,45678,95);
-console.log(student1);
-console.log(student1.greeting())
-console.log(student1.isExcellentStudent());
-
-const student2 = new Student("Boris Jons", "1998", "male",2020,114560678,90);
-console.log(student2);
-console.log(student2.greeting())
-console.log(student2.isExcellentStudent());
-
-const student3 = new Student("Fiona Smit", "1995", "female",2020,6766745678,75);
-console.log(student3);
-console.log(student3.greeting())
-console.log(student3.isExcellentStudent());
-
-const student4 = new Student("Omar Froter", "1989", "male",2020,45678,99);
-console.log(student4);
-console.log(student4.greeting())
-console.log(student4.isExcellentStudent());
+const student1 = new Student("Den Braun", "1998", "male", 2020, 45678, 95);
+const student2 = new Student("Boris Jons", "1998", "male", 2020, 114560678, 90);
+const student3 = new Student(
+  "Fiona Smit",
+  "1995",
+  "female",
+  2020,
+  6766745678,
+  75
+);
+const student4 = new Student("Omar Froter", "1989", "male", 2020, 45678, 99);
 
 //робимо масив
-const arrayStudents =[student1,student2,student3,student4]
-console.log(arrayStudents);
+const arrayStudents = [student1, student2, student3, student4];
+
+/*Задача реалізувати статичний метод в класі Students
+Цей метод приймає масив екземплярів класу Students //183 рядок
+обчислює і повертає як результат роботи середній бал
+всіх студентів з масиву
+
+*/
+
+//console.log(Student.myStaticMethod(arrayStudents));
+
+Student.calculateAveregGrade(arrayStudents);
