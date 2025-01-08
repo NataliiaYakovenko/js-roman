@@ -1,69 +1,42 @@
-//Патерни
-
-/*
-Фабричний метод - це спосіб створювати об'єкти, 
-який дозволяє нам не вказувати конкретний клас об'єкта
-Використовуємо спеціальну фабрику для використовування об'єктів
-Фабрика знає, який саме об'єкт нам потрібно створити і повертає його нам 
-
-new Student  //- так НЕ РОБИМО
-
-Звертаємось до фабрики, фабриці повідомляємо, що нам потрібно
-ш фабрика вже буде нам робии екземпляри потрібного класу
-
-*/
-//Абстрактний клас або інтерфейс
-class Animal {
-  constructor(nickname) {
-    this.nickname = nickname;
+class MyArray {
+  constructor() {
+    this.length = 0; // довжина нашого масиву завжди буде дорівнюати 0 при створені масиву
   }
-
-  makeSound() {
-    // абстрактний метод
-  }
-}
-
-//Конкретний клас для собаки
-class Dog extends Animal{
-    constructor(nickname){
-  super(nickname);
+  push() {
+    for (let i = 0; i < arguments.length; i++) {
+      this[this.length] = arguments[i]; // в поточну довжину запихуємо значення
+      this.length++; //потрібно збільшити довжуну масива на 1
     }
-
-  makeSound(){   //віртуальний метод
-      console.log('gav-gav');
-  }  
-}
-//Конкретний клас для кота
-class Cat extends Animal{
-  constructor(nickname){
-    super(nickname);
+    return this.length; //повертаємо поточну довжину масива
   }
-  
-  makeSound(){   //віртуальний метод
-    console.log('myau-myau');
-}  
-}
 
-//фабричний клас, який створює об'єкти
-class AnimalFactory{
-  creatAnimal(type,nickname){
-     switch(type){
-      case 'dog': return new Dog(nickname);
-      case 'cat': return new Cat(nickname);
-      default: throw new Error(`Unknown type of animal: ${type}`)
-     }
+  pop() {
+    if (this.length > 0) {
+      //якщо довжина масив більше 0
+      //1. Зберегти останній елемент
+      const lastItem = this[this.length - 1]; //потрібно від поточної довжини масива - 1
+      //2.Видалити останній елемент з масиву
+      delete this[this.length - 1];
+      //3.Після видалення останнього елементу нам потрібно зменшити довжину масиву на 1
+      this.length--;
+      //4. Повернути останній елемент
+      return lastItem;
+    } else {
+      return undefined;
+    }
+  }
+
+  forEach(callback) {
+    for (let i = 0; i < this.length; i++) {
+      callback(this[i], i, this);
+    }
   }
 }
 
-//Створення фабрики для використання об'єктів
-const factory = new AnimalFactory()
-
-//Створити об'єкт собаки
-const dog = factory.creatAnimal('dog', 'Tuzik')
-dog.makeSound()  //gav-gav
-
-//Створити об'єкт кота
-const cat = factory.creatAnimal('cat', 'Murzik')
-cat.makeSound()  //myau-myau
-
-
+const array1 = new MyArray()
+console.log(array1.push(1,2,3,4,5));
+console.log(array1)
+console.log(array1.pop());
+console.log(array1)
+array1.forEach((item)=>{
+  console.log(item**2)});
