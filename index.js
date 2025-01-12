@@ -1,59 +1,85 @@
-class MyArray {
-  constructor() {
-    this.length = 0; // довжина нашого масиву завжди буде дорівнюати 0 при створені масиву
-  }
-  push() {
-    for (let i = 0; i < arguments.length; i++) {
-      this[this.length] = arguments[i]; // в поточну довжину запихуємо значення
-      this.length++; //потрібно збільшити довжуну масива на 1
-    }
-    return this.length; //повертаємо поточну довжину масива
+//Стек Stack
+
+//Принцип LIFO
+//last in - first out
+
+//Stack overflow - помилка виникає при переповнені стеку
+
+/*
+Stack - має реалізовувати такі операці
+- push - вставляємо елемент на вершину стеку
+- pop - видалення елементу з вершини стеку і повернення видаленого елементу
+- isEmpty - повертається true,якщо стек пустий//false - якщо стек не пустий
+- pick - коли нам повертає останній елемент, але нічого не робить з ним і не видаляє із стеку
+
+*/
+//Реалізація стека
+class Stack {
+  constructor(maxSize) {
+    this._maxSize = maxSize;
+    this._size = 0;
   }
 
+  get isEmpty() {
+    return this._size === 0; // якщо розмір = 0 тоді повертається true/ (оператор === повертає булєвоє значення)
+  }
+  set size(newValue) {
+    throw new Error("Access denied"); // доступ заборонено
+  }
+  get size() {
+    return this._size;
+  }
+  set maxSize(newValue) {
+    throw new Error("Access denied"); // доступ заборонено
+  }
+  get maxSize() {
+    return this._maxSize;
+  }
+  push(newValue) {
+    if (this._size > this._maxSize) {
+      throw new Error("Stack overflow");
+    }
+    this[`_${this.size}`] = newValue;
+    this._size++;
+    return this.size;
+  }
   pop() {
-    if (this.length > 0) {
-      //якщо довжина масив більше 0
-      //1. Зберегти останній елемент
-      const lastItem = this[this.length - 1]; //потрібно від поточної довжини масива - 1
-      //2.Видалити останній елемент з масиву
-      delete this[this.length - 1];
-      //3.Після видалення останнього елементу нам потрібно зменшити довжину масиву на 1
-      this.length--;
-      //4. Повернути останній елемент
-      return lastItem;
-    } else {
-      return undefined;
-    }
-  }
+    if (this.size > 0);
+    {
+      const lastitem = this[`_${this.size - 1}`];
+      delete this[`_${this.size}`];
+      this._size--;
 
-  forEach(callback) {
-    for (let i = 0; i < this.length; i++) {
-      callback(this[i], i, this);
+      return lastitem;
     }
   }
-  map(callback) {
-    // 1 створили новий масив - він буде нашим результуючим масивом
-    const resultArray = new MyArray();
-    // 2 пройтись по поточному масиву від початку і до кінця
-    for (let i = 0; i < this.length; i++) {
-      //Запихуємо у результуючий масив, значення яке нам буде повертати (return) callback
-      resultArray.push(callback(this[i], i, this));
-    }
-    //3 Повернути як результат роботи методу map - результуючий масив
-    return resultArray;
+  pick() {
+    return this[`_${this.size-1}`];
   }
 }
+const myStack = new Stack(4)
+console.log(myStack)
+console.log(myStack.push('task1'));
+console.log(myStack)
+console.log(myStack.isEmpty)
+console.log(myStack.push('task2'));
+console.log(myStack)
+console.log(myStack.push('task3'));
+console.log(myStack)
+console.log(myStack.pick())
+console.log(myStack.push('task4'));
+console.log(myStack)
+console.log(myStack.pick())
+console.log(myStack.pop())
+console.log(myStack)
+console.log(myStack.pick())
+console.log(myStack.pop())
+console.log(myStack)
+console.log(myStack.pick())
+console.log(myStack.pop())
+console.log(myStack)
+console.log(myStack.pick())
+console.log(myStack.pop())
+console.log(myStack)
+console.log(myStack.isEmpty)
 
-const array1 = new MyArray();
-console.log(array1.push(1, 2, 3, 4, 5));
-console.log(array1);
-console.log(array1.pop());
-console.log(array1);
-array1.forEach((item) => {
-  console.log(item ** 2);
-});
-//Задача. Створити новий масив, який буде містити квадрати чисел з масиву array1
-const doubleNumbers = array1.map((item)=>{
-return item**2;
-})
-console.log(doubleNumbers)
