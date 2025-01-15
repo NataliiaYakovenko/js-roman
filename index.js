@@ -1,52 +1,65 @@
-//Queue - черга
+//Map (мапа, словник)
+//Map створюють для створення словників
 /*
-Методи queue
-1. Enqueue - вставляє елемент в кінець черги
-2. Dequeue - видаляє елемент з початку черги
+Зберігає пари 'ключ: значення'
+Має розмір (size) 
+
+Ключ в Мар має бути унікальним
+
+Відміності від звичайного об'єкта
+1. Мар запам'ятовує елементи в тому порядку, в якому ми їх додаємо
+2. в Мар ключем може бути любий тип даних: string, boolean,bigint,objact, function
+Об'єкти (в тому числі функції) - передаються за посиланнями
+
 */
-//Створення черги
-class Queue {
-  constructor(head, tail) {
-    this._head = 0;
-    this._tail = 0;
-  }
-  get size() {
-    return this._tail - this._head;
-  }
 
-  enqueue(value) {
-    //tail відповідає на запитання, який елемент має бути останнім
-    this[this._tail] = value;
-    this._tail++; //на 1 збільшуємо наш tail
-    return this.size;
-  }
+//Методи Мар
+//set - доавати значення в Мар
 
-  dequeue() {
-    if (this.size > 0) {
-      const firstItem = this[this._head]; //це і буде елемент, який стоїть на початку черги
-      delete this[this._head]; //видаляємо елемент що стоїть на початку черги
-      this._head++;
-      return firstItem;
-    } else{
-      return undefined;
+const map = new Map();
+console.log(map);
+
+map.set(1, {});
+console.log(map);
+
+map.set("1", "value");
+console.log(map);
+//-----------------------------
+
+// get - отримувати значення з Мар
+console.log(map.get("1")); //value
+//-----------------------------
+
+//has - дозволяє швидко дізнатися чи є в нашій мар якийсь певний ключ
+console.log(map.has(1)); //true
+console.log(map.has("1")); //true
+console.log(map.has(33)); //false
+//------------------------------
+
+//Створюємо словник
+const vocabulary = new Map();
+vocabulary.set("cat", "кіт");
+vocabulary.set("dog", "собака");
+vocabulary.set("eat", "їсти");
+
+/*
+Написати функцію, яка приймає строку англійською
+і перекладає цю строку українською використовуючи наш словник
+*/
+function translate(string, vocabulary) {
+  const arrayWords = string.toLowerCase().trim().split(" ");
+  console.log(arrayWords);
+  //у нас є словник vocabulary
+  //перебрати arrayWords і переклад для кожного англійського слова у масиві
+  const translatedArray = arrayWords.map((word) => {
+    if(vocabulary.has(word)){
+      return vocabulary.get(word);
+    }else{
+      return word;
     }
-  }
+  });
+  return translatedArray.join(' ');
+  //дістати з нашого слованика vocabulary
 }
-const queue = new Queue()
-console.log(queue)
-console.log(queue.enqueue('task1'))
-console.log(queue)
-console.log(queue.enqueue('task2'))
-console.log(queue)
-console.log(queue.enqueue('task3'))
-console.log(queue)
-console.log(queue.dequeue())
-console.log(queue)
-console.log(queue.dequeue())
-console.log(queue)
-console.log(queue.dequeue())
-console.log(queue)
-console.log(queue.dequeue())
-console.log(queue)
-console.log(queue.size)
-console.log(queue.dequeue())
+console.log(translate("      Cat eat dog             ", vocabulary))
+console.log(translate('Dog eat cat',vocabulary));
