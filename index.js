@@ -1,26 +1,41 @@
 //Задача МАР
-
 /*
-Зберегти розклад занять, використовуючи дні тижня, як ключі
-а значеннями будуть списки занять, які відбуваються у відповідний день
+є два об'єкти users
+сonst user1 = {
+firstName: 'Alex',
+lastName: 'Doe',
+id: 1,
+
+сonst user1 = {
+firstName: 'John',
+lastName: 'Doe',
+id: 2,
+}
+
+const johnMessages = ['Hello', 'How are you?']
+const alexMessages = ['Hi!', 'I am fine']
+
+Задача. За допомогою Мар зв'язати користувача з його повідомленнями
+щоб за id користувача можна було знайти його повідомлення 
+
 */
-const schedule = new Map();
+const user1 = {
+    firstName: 'Alex',
+    lastName: 'Doe',
+    id: 1,
+} 
+    const user2 = {
+    firstName: 'John',
+    lastName: 'Doe',
+    id: 2,
+    }
+    
+    const johnMessages = ['Hello', 'How are you?']
+    const alexMessages = ['Hi!', 'I am fine']
 
-//Додавання занять до розкладу
-schedule.set('Понеділок',['Математика','Фізика']);
-schedule.set('Вівторок',['Англійська мова','Всесвітня історія']);
-schedule.set('Середа',['Хімія', 'Географія']);
-schedule.set('Четвер', ['Зарубжна література', 'Біологія']);
-schedule.set('П\`ятниця',['Інформатика','Фізкультура']);
+    const getMessage = new Map();
+    getMessage.set(user1.id,johnMessages);
+    getMessage.set(user2.id,alexMessages);
 
-//Отримання розкладу занять для певного дня
-console.log(schedule.get('Понеділок'))
-console.log(schedule);
-
-//Перевірка, чи є розклад для певного дня
-console.log(schedule.has('Середа'));
-console.log(schedule.has('Субота'));
-
-//Отримати кількість днів занять в розкладі
-console.log(schedule.size);
-
+    console.log(getMessage.get(user1.id))
+    console.log(getMessage.get(user2.id))
