@@ -1,70 +1,43 @@
-// Map - методи продовження
-//Конструктор new Map() - очикує від нас ітерірований об'єкт
-//Картеж  <--[['key1', 'value1'],['key2','value2']], коли в основному масиві є пар масивів
+//Set - множина набір унікальних значень 
+//Основна суть Set - Дублікатів елементів не буде
 
-const map1 = new Map([['key1', 'value1'],['key2','value2']])
-console.log(map1);
+const set = new Set()
+console.log(set)
+//------------------------------------------
 
-//метод  set() може перезаписувати значення
-map1.set('key2','value7');
-console.log(map1);  //Map(2) {'key1' => 'value1', 'key2' => 'value7'}
-//---------------------------------------------------------------
+//Методи Set
 
-//Метод map.prototype.entries() - метод повертає ітератор. 
-//Ітератор повертає пари (ключ, значення) для кожного елемента
-console.log(map1.entries()); //MapIterator {'key1' => 'value1', 'key2' => 'value2'}
+//Set.prototype.add() - додає новий елемент із заданим значенням у кінець об'єкта Set
+set.add(1)
+console.log(set);  //Set(1) {1}
+set.add(4)
+console.log(set); //Set(2) {1, 4}
+set.add('hello')
+console.log(set);  //Set(3) {1, 4, 'hello'}
+set.add('hello')
+console.log(set); // 2 hello не додався
+//-------------------------------------------
 
-const entriesIterator = map1.entries()
-console.log(entriesIterator);
-//--------------------------------------------------------------
+//Set.prototype.has() - перевіряє наявність елементу у множині
+console.log(set.has(1));  //true
+console.log(set.has(12)); //false
+//------------------------------------------
 
-//Метод map.next() - виведення ключів і значень
-// після виведення нвступного map.next() отримуємо наступний ключ і значення
-console.log(entriesIterator.next()); //'key1' => 'value1'
-console.log(entriesIterator.next())  //'key2' => 'value2'
-console.log(entriesIterator.next())   //{value: undefined, done: true}
-//----------------------------------------------------------------
+//Set.prototype.delete() - видаляє елемент із множини
+set.delete('hello');
+console.log(set) //Set(2) {1, 4}
+//-------------------------------------------
 
-//Метод map.keys() - повертає ітератор з усіма ключами з об'єкту map
-const keysIterator = map1.keys()
-console.log(keysIterator) //MapIterator {'key1', 'key2'}
-console.log(keysIterator.next()) //{value: 'key1', done: false}
-//-----------------------------------------------------------------
+const set2 = new Set([2,3,4,5])
+console.log(set2);
 
-//Метод map.values() -повертає ітератор з усіма значеннями з об'єкту map
-const valuesIterator = map1.values()
-console.log(valuesIterator); //MapIterator {'value1', 'value7'}
-//------------------------------------------------------------------
+//Set.prototype.values() - використовується для отримання ітератора, 
+// який повертає нам всі значення з об'єкта Set
+const valuesIterator = set.values()
+console.log(valuesIterator)// SetIterator {1, 4}
+console.log(valuesIterator.next())//{value: 1, done: false}
+console.log(valuesIterator.next()) //{value: 4, done: false}
+console.log(valuesIterator.next())//{value: undefined, done: true}
 
-//Перетворюємо map в масив
-const arrayMap = Array.from(map1)
-console.log(arrayMap)
-//-------------------------------------------------------------------
-
-//Метод map.forEach() - використовується для iтерації (перебору) всіх елементів у МАР
-// і виклику певної функції(callback) для кожного елемента нашої мар
-//map.forEach() працює также, як forEach() в масиві
-//Задача: вивести на консоль мар
-map1.forEach((value,key,map)=>{
-    console.log(`${key} - ${value}`);
-})
-//--------------------------------------------------------------------
-
-//Метод map.delete() - використовується для видалення пари ключ-значення з об'єкта Мар
-//відповідно до якогось ключа
-console.log(map1.has('key2'))
-//console.log(map1.delete('key2'));
-console.log(map1)  //Map(1) {'key1' => 'value1'}
-//-------------------------------------------------------------------
-
-//Метод map.clear() - використовується для повного очищення об'єкта мар
-//видаляючи всі пари ключ-значення, які знаходяться там
-console.log(map1.size);
-//console.log(map1.clear()); //Map(0) {size: 0}
-console.log(map1) 
-//--------------------------------------------------------------------
-
-//Задача: вивести на консоль мар
-console.log(...map1)
-console.log(...map1.keys())
-console.log(...map1.values())
+const arrayFromSet = [...set.values()]
+console.log(arrayFromSet); //(2) [1, 4]
