@@ -1,15 +1,31 @@
 // Set - задачі
 
 /*
-Дано масив [2,3,3,5,6,77,77,5,1,1,12,12,13]
-Повернути масив без повторень
-*/
-//varsion1
-const set = new Set([2,3,3,5,6,77,77,5,1,1,12,12,13])
-const arraySet = Array.from(set)
-console.log(arraySet);
+Дано два масиви:
+const array1 = [4,3,7,5,-11]
+const array2 =[3,4,8,7,2,-11]
+Повернути з функції масив, що складається з різниці двох масивів
+(тобто тих значень, які не повторюються в обох масивах)
 
-//varsion2
-const set1 = new Set([2,3,3,5,6,77,77,5,1,1,12,12,13])
-const arraySet1 = [...set]
-console.log(arraySet1)
+Алгоритм
+Ви приймаєте два маисиви
+Васм потрібно зробити новий масив, але там неповинно бути дублювань
+*/
+//varius1
+const array1 = [4,3,7,5,-11]
+const array2 =[3,4,8,7,2,-11]
+const arraySet = [...array1,...array2];
+console.log(arraySet);
+const set = new Set(arraySet)
+console.log(set)
+const arr = Array.from(set)
+console.log(arr);
+
+//varius3 with function
+function twoArraysWithoutDoubles(array1,array2){
+  return [...new Set([...array1,...array2])]
+}
+const arrayWithout = twoArraysWithoutDoubles(array1,array2)
+console.log(arrayWithout)
+
+
