@@ -1,30 +1,70 @@
-/*Існує три види деструктуризації у JS
+/*
+Замикання - дозволяє функціям зберігати доступ до змінних,
+ навіть коли ті функції завершують своє виконання
 
-1. Деструктуризація об'єктів
-2. Деструктуризація вхідних параметрів
-3. Деструктуризація масивів
+Замикання - це здатність функції запам'ятовувати локальну область видимості
+
 */
 
-// Деструктуризація вхідних параметрів
+//Створюємо функцію, яка буде щось логувати
+let value = 10;
 
-function getFullName({firstName,lastName,...restObject}){           //деструктуризуємо, що нам потрібно
-  console.log(restObject)
-  return `${firstName} ${lastName}`
-};
+function wrapper() {
+  let value = 20;
+  console.log("WRAPPER function", value);
 
-
-
-const user ={
-   firstName: 'Nataliia',
-   lastName: 'Yakovenko',
-   age:41,
-   geolocation: '45.56677555.433.222222',
-   browser: 'Ubuntu'
+  return function log() {
+    console.log("LOG function", value);
+  };
 }
+//-------------------------------------------
+//Буде повертати 1
+function counter() {
+  let i = 0;
+  i++;
+  return i;
+}
+console.log(counter()); //1
+console.log(counter()); //1
+console.log(counter()); //1
+console.log(counter()); //1
+//------------------------------------
+//Буде повертати значення і збільшене на 1
+function makeCounter() {
+  let i = 0;
+  return function () {
+    return i++; // i - це змінна у замиканні
+  };
+}
+const fn = makeCounter();
+console.log(fn()); //0
+console.log(fn()); //1
+console.log(fn()); //2
+console.log(fn()); //3
+console.log(fn()); //4
+//---------------------------------------
 
-console.log(getFullName(user));
+function makeCounter2() {
+  let counter = 0;
 
+  return {
+    increment() {
+      return ++counter;
+    },
+    dicrement() {
+      return --counter;
+    },
+  };
+}
+const fnObj = makeCounter2()
+console.log(fnObj);  //{increment: ƒ, dicrement: ƒ}
 
+console.log(fnObj.increment())  //1
+console.log(fnObj.increment())  //2
+console.log(fnObj.increment())  //3
 
+console.log(fnObj.dicrement())  //2
+console.log(fnObj.dicrement())  //1
+console.log(fnObj.dicrement())  //0
 
-
+//Зробіть методи, які будуть збільшувати,зменшувати counter на певну кількість
