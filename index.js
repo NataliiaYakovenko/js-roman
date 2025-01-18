@@ -1,31 +1,48 @@
-// Set - задачі
+//Деструктуризація - це спосіб створити змінну
 
-/*
-Дано два масиви:
-const array1 = [4,3,7,5,-11]
-const array2 =[3,4,8,7,2,-11]
-Повернути з функції масив, що складається з різниці двох масивів
-(тобто тих значень, які не повторюються в обох масивах)
+const monitor = {//об'єкт монітор
+  size: {// вкладений об'єкт розмір
+    height: { // вкладений об'єкт висота
+      value: 30,
+      skale: "cm // 1", //одиниці виміру
+    },
+    width: {
+      value: 50,
+      skale: "cm // 2",
+    },
+  },
+  brightness: 750,
+  refresh: {
+    //оновлення
+    value: 144,
+    skale: "Ggrc",
+  },
+  color: "black",
+  resulution: "4k",
+};
 
-Алгоритм
-Ви приймаєте два маисиви
-Васм потрібно зробити новий масив, але там неповинно бути дублювань
-*/
-//varius1
-const array1 = [4,3,7,5,-11]
-const array2 =[3,4,8,7,2,-11]
-const arraySet = [...array1,...array2];
-console.log(arraySet);
-const set = new Set(arraySet)
-console.log(set)
-const arr = Array.from(set)
-console.log(arr);
+console.log(monitor.color);
+console.log(monitor.size.height.value);
+//або щоб знайти value можна зробити короче
+//const height = monitor.size.height.value;
+//console.log(height)
 
-//varius3 with function
-function twoArraysWithoutDoubles(array1,array2){
-  return [...new Set([...array1,...array2])]
-}
-const arrayWithout = twoArraysWithoutDoubles(array1,array2)
-console.log(arrayWithout)
+//Використовуємо деструтктуризацію
+//const {resulution,color:monitorColor} = monitor; //створили дві змінні i перейменовуємо значення color
+//console.log(resulution);
+//console.log(monitorColor);
 
+//Задача. витягнути value для висоти та ширини monitor
+const {size:{height:{value: hightValue},width:{value: widthValue}}}=monitor;
+console.log(hightValue);
+console.log(widthValue);
 
+const {size:{height:{skale:heightSkale},width:{skale:widthSkale}}} = monitor;
+console.log(heightSkale);
+console.log(widthSkale)
+
+const {color,brightness,resulution,...restOfMonitor}=monitor;
+console.log(color);
+console.log(brightness);
+console.log(resulution);
+console.log(restOfMonitor);
