@@ -5,41 +5,26 @@
 3. Деструктуризація масивів
 */
 
-//Деструктуризація масивів
-//Масиви надають читкий порядок елементів
-const arr =[1,2,3,4,5,6];
+// Деструктуризація вхідних параметрів
 
-//const firstElement = arr[0]; //- виводимо перший елемент
-//виводимо перший елемент через деструктуризацію масива
-//const[firstElement,secondElement,thirdElement,fourthElement]=arr;
-
-//Якщо нам потрібно тільки перші два елементи масиву
-const[firstElement,secondElement,...restOfArr]=arr;
+function getFullName({firstName,lastName,...restObject}){           //деструктуризуємо, що нам потрібно
+  console.log(restObject)
+  return `${firstName} ${lastName}`
+};
 
 
 
-//------------------------------------------------------------
-//Дестректурузувати маисв з об'єкта
-//Задача 2
-const user={
-  name: 'Nataliia',
-  age: 41,
-  adress:{
-    city:'Zaporizhzha',
-    country:'Ukraine',
-  },
-  contacts:{
-    email: 'yakovenkonatali@gmail.com',
-    phone:[+380662865135,+380997865534,+380674532412],
-
-  }
+const user ={
+   firstName: 'Nataliia',
+   lastName: 'Yakovenko',
+   age:41,
+   geolocation: '45.56677555.433.222222',
+   browser: 'Ubuntu'
 }
-const{contacts:{phone:[firstNumber,secondNumber,thirdNumber]}}=user
 
-//const[firstNumber,secondNumber,thirdNumber]=phone;
-console.log(firstNumber);
-console.log(secondNumber);
-console.log(thirdNumber);
+console.log(getFullName(user));
+
+
 
 
 
